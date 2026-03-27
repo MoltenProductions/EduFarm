@@ -1,32 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moltens Lab</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10 Minutes Till Dawn</title>
+    <script src="Build/UnityLoader.js"></script>
+    <link rel="icon" href="icon.png">
+    <script src="/js/main.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/10MinutesTillDawnWebGL.json");
+      var scaleToFit;
+      try {
+        scaleToFit = !!JSON.parse("");
+      } catch (e) {
+        scaleToFit = true;
+      }
 
-<body>
+      function onResize() {
+        var canvas = gameInstance.Module.canvas;
+        var container = gameInstance.container;
+        var w;
+        var h;
 
-<header>
-    <h1>Moltens Lab</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="games.html">Games</a>
-    </nav>
-</header>
+        if (scaleToFit) {
+          w = window.innerWidth;
+          h = window.innerHeight;
 
-<main class="home">
-    <h2>Welcome to Moltens Lab</h2>
-    <p>Play classic web games directly in your browser.</p>
+          var r = 675 / 1200;
 
-    <a class="play-btn" href="games.html">Browse Games</a>
-</main>
+          if (w * r > window.innerHeight) {
+            w = Math.min(w, Math.ceil(h / r));
+          }
+          h = Math.floor(w * r);
+        } else {
+          w = 1200;
+          h = 675;
+        }
 
-<footer>
-    <p>© 2026 Moltens Lab</p>
-</footer>
+        container.style.width = canvas.style.width = w + "px";
+        container.style.height = canvas.style.height = h + "px";
+        container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
+        container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
+      }
+      window.addEventListener("resize", onResize);
+    </script>
+    <style>
+      html,
+      body {
+        background: #000;
+        background: ;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+      }
 
-</body>
+      div#gameContainer {
+        background: transparent !important;
+        position: absolute;
+      }
+
+      div#gameContainer canvas {
+        position: absolute;
+      }
+
+      div#gameContainer[data-pixelated="true"] canvas {
+        image-rendering: optimizeSpeed;
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+        image-rendering: pixelated;
+        -ms-interpolation-mode: nearest-neighbor;
+      }
+    </style>
+  </head>
+
+  <body onload="onResize();">
+    <div id="gameContainer" data-pixelated="true"></div>
+  </body>
 </html>
