@@ -7,17 +7,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>Moltens Lab</h1>
     <nav>
       <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
     </nav>
   </header>
 
-  <main>
-    <h2>Available Games</h2>
+  <!-- Main Games Content -->
+  <main class="games-page">
     <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
     <div id="game-list"></div>
+
+    <!-- iframe to load selected game -->
+    <iframe id="game-frame" src=""></iframe>
   </main>
 
   <footer>
@@ -25,32 +30,25 @@
   </footer>
 
   <script>
-    async function loadGames() {
-      const container = document.getElementById('game-list');
+    const gamesContainer = document.getElementById('game-list');
+    const gameFrame = document.getElementById('game-frame');
 
-      // List all folders in /games automatically
-      // This assumes all game folders contain index.html
-      const games = [
-        // You will manually update this array with new games if using static GitHub Pages,
-        // OR use a server script to dynamically list folders if you have a backend.
-      ];
+    // Automatic list of games (folder names in /games)
+    const gameFolders = ['10-minutes-till-dawn']; // Add new game folders here
 
-      // For GitHub Pages, we can fetch a static JSON of games or hardcode folder names
-      // Here’s a simple way if you manually update once
-      const gameFolders = ['10-minutes-till-dawn']; // start with existing games
-
-      gameFolders.forEach(game => {
-        const div = document.createElement('div');
-        div.className = 'game-card';
-        div.dataset.name = game.toLowerCase();
-        div.innerHTML = `
-          <h3>${game.replace(/-/g,' ')}</h3>
-          <button onclick="window.open('games/${game}/index.html', '_blank')">Play Game</button>
-        `;
-        container.appendChild(div);
+    // Generate game cards
+    gameFolders.forEach(game => {
+      const div = document.createElement('div');
+      div.className = 'game-card';
+      div.dataset.name = game.toLowerCase();
+      div.innerHTML = `<h3>${game.replace(/-/g,' ')}</h3>`;
+      div.addEventListener('click', () => {
+        gameFrame.src = `games/${game}/index.html`; // opens in same page iframe
       });
-    }
+      gamesContainer.appendChild(div);
+    });
 
+    // Search function
     function filterGames() {
       const input = document.getElementById('search').value.toLowerCase();
       const cards = document.querySelectorAll('.game-card');
@@ -62,8 +60,6 @@
         }
       });
     }
-
-    loadGames();
   </script>
 </body>
 </html>
