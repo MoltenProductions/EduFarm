@@ -43,6 +43,58 @@ header nav a:hover {
 }
 
 /* ===========================
+   Homepage Hero
+=========================== */
+.hero {
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    padding: 15px 40px;
+    background-color: #ff4500;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.hero-button:hover {
+    background-color: #ff652f;
+}
+
+/* ===========================
+   Features Section (Optional)
+=========================== */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 20px;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #1c1c1c;
+    padding: 25px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+}
+
+/* ===========================
    Games Page
 =========================== */
 main.games-page {
@@ -52,6 +104,7 @@ main.games-page {
     padding: 40px 20px;
 }
 
+/* Center the search bar */
 #search {
     padding: 15px;
     width: 400px;
@@ -60,6 +113,9 @@ main.games-page {
     border: none;
     margin-bottom: 40px;
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #game-list {
@@ -71,7 +127,7 @@ main.games-page {
     max-width: 1300px;
 }
 
-/* Bigger game card with background image */
+/* Game tiles with background images */
 .game-card {
     border-radius: 15px;
     width: 300px;
