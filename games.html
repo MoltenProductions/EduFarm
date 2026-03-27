@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moltens Lab Games</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Moltens Lab</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+    </nav>
+</header>
+
+<main>
+
+<h2>Games</h2>
+
+<input type="text" id="search" placeholder="Search games...">
+
+<div id="gameList" class="games">
+
+<div class="game" data-name="tetris">
+<h3>Tetris</h3>
+<button onclick="playGame('games/tetris/index.html')">Play</button>
+</div>
+
+<div class="game" data-name="snake">
+<h3>Snake</h3>
+<button onclick="playGame('games/snake/index.html')">Play</button>
+</div>
+
+<div class="game" data-name="pacman">
+<h3>Pacman</h3>
+<button onclick="playGame('games/pacman/index.html')">Play</button>
+</div>
+
+</div>
+
+<div id="player">
+<h2>Game Player</h2>
+<iframe id="gameFrame"></iframe>
+</div>
+
+</main>
+
+<footer>
+<p>© 2026 Moltens Lab</p>
+</footer>
+
+<script>
+
+const search = document.getElementById("search");
+
+search.addEventListener("input", () => {
+
+let filter = search.value.toLowerCase();
+let games = document.querySelectorAll(".game");
+
+games.forEach(game => {
+
+let name = game.dataset.name;
+
+if(name.includes(filter))
+game.style.display="block";
+else
+game.style.display="none";
+
+});
+
+});
+
+function playGame(url){
+document.getElementById("gameFrame").src = url;
+document.getElementById("player").scrollIntoView();
+}
+
+</script>
+
+</body>
+</html>
