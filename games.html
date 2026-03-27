@@ -26,24 +26,31 @@
   </main>
 
   <footer>
-    <p>© 2026 Moltens Lab</p>
+    <p>© 2026 Moltens Lab | Made By: Mason A</p>
   </footer>
 
   <script>
     const gamesContainer = document.getElementById('game-list');
     const gameFrame = document.getElementById('game-frame');
 
-    // Automatic list of games (folder names in /games)
-    const gameFolders = ['10-minutes-till-dawn']; // Add new game folders here
+    // List of game folders (each folder should have an index.html and thumbnail image)
+    const gameFolders = [
+      {folder: '10-minutes-till-dawn', thumb: 'games/10-minutes-till-dawn/thumbnail.jpg'}
+      // Add more games here in the same format:
+      // {folder: 'MyGame', thumb: 'games/MyGame/thumbnail.jpg'}
+    ];
 
     // Generate game cards
     gameFolders.forEach(game => {
       const div = document.createElement('div');
       div.className = 'game-card';
-      div.dataset.name = game.toLowerCase();
-      div.innerHTML = `<h3>${game.replace(/-/g,' ')}</h3>`;
+      div.dataset.name = game.folder.toLowerCase();
+      div.style.backgroundImage = `url('${game.thumb}')`;
+      div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
       div.addEventListener('click', () => {
-        gameFrame.src = `games/${game}/index.html`; // opens in same page iframe
+        // Open game in iframe on same page
+        gameFrame.src = `games/${game.folder}/index.html`;
+        window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
       });
       gamesContainer.appendChild(div);
     });
@@ -54,7 +61,7 @@
       const cards = document.querySelectorAll('.game-card');
       cards.forEach(card => {
         if(card.dataset.name.includes(input)) {
-          card.style.display = 'block';
+          card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
