@@ -314,5 +314,49 @@
   {
     "folder": "csgo-clicker",
     "thumb": "games/csgo-clicker/"
+  },
+  {
+    "folder": "ctr",
+    "thumb": "games/ctr/logo.png"
+  },
+  {
+    "folder": "ctr-holiday",
+    "thumb": "games/ctr-holiday/"
+  },
+  {
+    "folder": "ctr-tr",
+    "thumb": "games/ctr-tr/fb.png"
+  },
+  {
+    "folder": "cubefield",
+    "thumb": "games/cubefield/"
+  },
+  {
+    "folder": "cupcake2048",
+    "thumb": "games/cupcake2048/favicon.png"
+  },
+  {
+    "folder": "dante",
+    "thumb": "games/dante/gzthermal-result.png"
+  },
+  {
+    "folder": "deal-or-no-deal",
+    "thumb": "games/deal-or-no-deal/index.jpg"
+  },
+  {
+    "folder": "death-run-3d",
+    "thumb": "games/death-run-3d/"
+  },
+  {
+    "folder": "deepest-sword",
+    "thumb": "games/deepest-sword/splash.jpg"
+  },
+  {
+    "folder": "defend-the-tank",
+    "thumb": "games/defend-the-tank/landscape.jpg"
+  },
+  {
+    "folder": "doctor-acorn2",
+    "thumb": "games/doctor-acorn2/icon-256.png"
   }
 ]
