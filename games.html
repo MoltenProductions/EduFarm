@@ -55,43 +55,79 @@
     const gameFrame = document.getElementById('game-frame');
     const volumeSlider = document.getElementById('volume');
 
-    // -------------------------------
-    // List all games automatically
-    // -------------------------------
-    const allGameFolders = [
-      // Add your game folder names here manually or via script
-      '10-minutes-till-dawn',
-      '100ng',
-      '1v1lol',
-      '99balls'
-    ];
+    // CLOAK PROMPT
+    function showCloakPrompt() {
+      if (!localStorage.getItem('cloakDone')) {
+        const popup = document.createElement('div');
+        popup.style.position = 'fixed';
+        popup.style.top = '0';
+        popup.style.left = '0';
+        popup.style.width = '100%';
+        popup.style.height = '100%';
+        popup.style.background = 'rgba(0,0,0,0.8)';
+        popup.style.color = '#fff';
+        popup.style.display = 'flex';
+        popup.style.flexDirection = 'column';
+        popup.style.alignItems = 'center';
+        popup.style.justifyContent = 'center';
+        popup.style.zIndex = '9999';
+        popup.style.padding = '20px';
+        popup.innerHTML = `
+          <h2>Welcome to Moltens Lab</h2>
+          <p style="max-width:500px;text-align:center;">
+            Welcome to Moltens Lab. If you are using a public computer you may
+            want to cloak the tab. Cloaking opens the site inside an about:blank tab
+            so the URL appears blank. If you don't need this you can continue normally.
+          </p>
+          <div style="margin-top:20px;">
+            <button id="cloak-btn" style="margin-right:10px;padding:10px 20px;">Cloak</button>
+            <button id="dont-cloak-btn" style="padding:10px 20px;">Continue</button>
+          </div>
+        `;
+        document.body.appendChild(popup);
 
-    function getThumbnail(folder) {
-      // Try .jpg first, fallback to .png
-      const jpg = `games/${folder}/thumbnail.jpg`;
-      const png = `games/${folder}/thumbnail.png`;
-      const img = new Image();
-      img.src = jpg;
-      img.onerror = () => { img.src = png; };
-      return img.src;
+        document.getElementById('cloak-btn').onclick = () => {
+          const win = window.open('about:blank', '_blank');
+          win.document.write('<iframe src="' + window.location.href + '" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>');
+          localStorage.setItem('cloakDone', 'true');
+          window.close();
+        };
+
+        document.getElementById('dont-cloak-btn').onclick = () => {
+          localStorage.setItem('cloakDone', 'true');
+          document.body.removeChild(popup);
+        };
+      }
     }
 
-    allGameFolders.forEach(folder => {
-      const div = document.createElement('div');
-      div.className = 'game-card';
-      div.dataset.name = folder.toLowerCase();
-      div.style.backgroundImage = `url('${getThumbnail(folder)}')`;
-      div.innerHTML = `<h3>${folder.replace(/-/g,' ')}</h3>`;
-      div.addEventListener('click', () => {
-        gameFrame.src = `games/${folder}/index.html`;
-        window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
-      });
-      gamesContainer.appendChild(div);
-    });
+    showCloakPrompt();
 
-    // -------------------------------
+    // Load games from JSON file
+    async function loadGames() {
+      try {
+        const res = await fetch('games/games-list.json');
+        const gameFolders = await res.json();
+
+        gameFolders.forEach(game => {
+          const div = document.createElement('div');
+          div.className = 'game-card';
+          div.dataset.name = game.folder.toLowerCase();
+          div.style.backgroundImage = `url('${game.thumb}')`;
+          div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
+          div.addEventListener('click', () => {
+            gameFrame.src = `games/${game.folder}/index.html`;
+            window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
+          });
+          gamesContainer.appendChild(div);
+        });
+      } catch (err) {
+        console.error("Error loading games-list.json", err);
+      }
+    }
+
+    loadGames();
+
     // Search function
-    // -------------------------------
     function filterGames() {
       const input = document.getElementById('search').value.toLowerCase();
       const cards = document.querySelectorAll('.game-card');
@@ -100,17 +136,13 @@
       });
     }
 
-    // -------------------------------
     // Close game
-    // -------------------------------
     function closeGame() {
       gameFrame.src = '';
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // -------------------------------
-    // Volume control
-    // -------------------------------
+    // Volume control for iframe games (requires same-origin or postMessage support)
     volumeSlider.addEventListener('input', () => {
       const vol = volumeSlider.value / 100;
       try {
