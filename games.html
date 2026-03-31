@@ -18,13 +18,20 @@
 
   <!-- Main Games Content -->
   <main class="games-page">
+    <!-- Centered Search Bar -->
     <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
+
+    <!-- Game Tiles -->
     <div id="game-list"></div>
 
-    <!-- iframe to load selected game -->
-    <iframe id="game-frame" src=""></iframe>
+    <!-- Game Container with Close Button -->
+    <div id="game-container">
+      <button id="close-game" onclick="closeGame()">Close Game</button>
+      <iframe id="game-frame" src=""></iframe>
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© 2026 Moltens Lab | Made By: Mason A</p>
   </footer>
@@ -61,12 +68,14 @@
       const input = document.getElementById('search').value.toLowerCase();
       const cards = document.querySelectorAll('.game-card');
       cards.forEach(card => {
-        if(card.dataset.name.includes(input)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
       });
+    }
+
+    // Close game function
+    function closeGame() {
+      gameFrame.src = '';
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
 </body>
