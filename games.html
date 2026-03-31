@@ -55,38 +55,43 @@
     const gameFrame = document.getElementById('game-frame');
     const volumeSlider = document.getElementById('volume');
 
-    // Load games from JSON file
-    async function loadGames() {
-      try {
-        const res = await fetch('games/games-list.json');
-        const gameFolders = await res.json();
+    // -------------------------------
+    // List all games automatically
+    // -------------------------------
+    const allGameFolders = [
+      // Add your game folder names here manually or via script
+      '10-minutes-till-dawn',
+      '100ng',
+      '1v1lol',
+      '99balls'
+    ];
 
-        for (const folder of gameFolders) {
-          // Attempt to find any jpg/png in the folder
-          let thumb = '';
-          const folderFilesRes = await fetch(`games/${folder}/`);
-          // GitHub Pages / static sites cannot list directory, so fallback to 'thumbnail.jpg/png'
-          thumb = `games/${folder}/thumbnail.jpg`; 
-
-          const div = document.createElement('div');
-          div.className = 'game-card';
-          div.dataset.name = folder.toLowerCase();
-          div.style.backgroundImage = `url('${thumb}')`;
-          div.innerHTML = `<h3>${folder.replace(/-/g,' ')}</h3>`;
-          div.addEventListener('click', () => {
-            gameFrame.src = `games/${folder}/index.html`;
-            window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
-          });
-          gamesContainer.appendChild(div);
-        }
-      } catch (err) {
-        console.error("Error loading games.json", err);
-      }
+    function getThumbnail(folder) {
+      // Try .jpg first, fallback to .png
+      const jpg = `games/${folder}/thumbnail.jpg`;
+      const png = `games/${folder}/thumbnail.png`;
+      const img = new Image();
+      img.src = jpg;
+      img.onerror = () => { img.src = png; };
+      return img.src;
     }
 
-    loadGames();
+    allGameFolders.forEach(folder => {
+      const div = document.createElement('div');
+      div.className = 'game-card';
+      div.dataset.name = folder.toLowerCase();
+      div.style.backgroundImage = `url('${getThumbnail(folder)}')`;
+      div.innerHTML = `<h3>${folder.replace(/-/g,' ')}</h3>`;
+      div.addEventListener('click', () => {
+        gameFrame.src = `games/${folder}/index.html`;
+        window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
+      });
+      gamesContainer.appendChild(div);
+    });
 
+    // -------------------------------
     // Search function
+    // -------------------------------
     function filterGames() {
       const input = document.getElementById('search').value.toLowerCase();
       const cards = document.querySelectorAll('.game-card');
@@ -95,13 +100,17 @@
       });
     }
 
+    // -------------------------------
     // Close game
+    // -------------------------------
     function closeGame() {
       gameFrame.src = '';
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Volume control for iframe games (requires same-origin or postMessage support)
+    // -------------------------------
+    // Volume control
+    // -------------------------------
     volumeSlider.addEventListener('input', () => {
       const vol = volumeSlider.value / 100;
       try {
