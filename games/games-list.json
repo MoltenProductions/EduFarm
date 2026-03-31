@@ -238,5 +238,45 @@
   {
     "folder": "cars-simulator",
     "thumb": "games/cars-simulator/splash.png"
+  },
+  {
+    "folder": "cell-machine",
+    "thumb": "games/cell-machine/"
+  },
+  {
+    "folder": "champion-island",
+    "thumb": "games/champion-island/archery-sprite.png"
+  },
+  {
+    "folder": "championarcher",
+    "thumb": "games/championarcher/championarcher.png"
+  },
+  {
+    "folder": "checkers",
+    "thumb": "games/checkers/image.png"
+  },
+  {
+    "folder": "chess",
+    "thumb": "games/chess/"
+  },
+  {
+    "folder": "chill-radio",
+    "thumb": "games/chill-radio/"
+  },
+  {
+    "folder": "chrome-dino",
+    "thumb": "games/chrome-dino/"
+  },
+  {
+    "folder": "circlo",
+    "thumb": "games/circlo/"
+  },
+  {
+    "folder": "classicube",
+    "thumb": "games/classicube/"
+  },
+  {
+    "folder": "cluster-rush",
+    "thumb": "games/cluster-rush/icon.jpg"
   }
 ]
