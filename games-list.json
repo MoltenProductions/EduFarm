@@ -686,5 +686,13 @@
   {
     "folder": "hackertype",
     "thumb": "games/hackertype/logo192.png"
-  }
+  },
+  {
+    "folder": "5 nights at epstiens",
+    "thumb": "games/5 Nights At Epstiens/bige.jpg"
+  },
+  {
+    "folder": "Buckshot Roulete",
+    "thumb": "games/BuckShot Roulette/shotgun.png"
+  },
 ]
