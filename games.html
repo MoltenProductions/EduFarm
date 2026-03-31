@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1>Moltens Lab</h1>
     <nav>
@@ -17,19 +16,12 @@
     </nav>
   </header>
 
-  <!-- Main Games Content -->
   <main class="games-page">
     <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
     <div id="game-list"></div>
 
-    <!-- Game Play Area -->
     <div id="game-play-wrapper">
-      <!-- Left Ad Panel -->
-      <div class="ad-panel" id="ad-left">
-        <div class="ad-box">Left Panel</div>
-      </div>
-
-      <!-- Game Container -->
+      <div class="ad-panel" id="ad-left"><div class="ad-box">Left Panel</div></div>
       <div id="game-container">
         <iframe id="game-frame" src=""></iframe>
         <div id="game-controls">
@@ -37,15 +29,10 @@
           <label>Volume: <input type="range" id="volume" min="0" max="100" value="100"></label>
         </div>
       </div>
-
-      <!-- Right Ad Panel -->
-      <div class="ad-panel" id="ad-right">
-        <div class="ad-box">Right Panel</div>
-      </div>
+      <div class="ad-panel" id="ad-right"><div class="ad-box">Right Panel</div></div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>© 2026 Moltens Lab | Made By: Mason A | <a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join Discord</a></p>
   </footer>
@@ -53,65 +40,15 @@
   <script>
     const gamesContainer = document.getElementById('game-list');
     const gameFrame = document.getElementById('game-frame');
-    const volumeSlider = document.getElementById('volume');
 
-    // CLOAK PROMPT
-    function showCloakPrompt() {
-      if (!localStorage.getItem('cloakDone')) {
-        const popup = document.createElement('div');
-        popup.style.position = 'fixed';
-        popup.style.top = '0';
-        popup.style.left = '0';
-        popup.style.width = '100%';
-        popup.style.height = '100%';
-        popup.style.background = 'rgba(0,0,0,0.8)';
-        popup.style.color = '#fff';
-        popup.style.display = 'flex';
-        popup.style.flexDirection = 'column';
-        popup.style.alignItems = 'center';
-        popup.style.justifyContent = 'center';
-        popup.style.zIndex = '9999';
-        popup.style.padding = '20px';
-        popup.innerHTML = `
-          <h2>Welcome to Moltens Lab</h2>
-          <p style="max-width:500px;text-align:center;">
-            Welcome to Moltens Lab. If you are using a public computer you may
-            want to cloak the tab. Cloaking opens the site inside an about:blank tab
-            so the URL appears blank. If you don't need this you can continue normally.
-          </p>
-          <div style="margin-top:20px;">
-            <button id="cloak-btn" style="margin-right:10px;padding:10px 20px;">Cloak</button>
-            <button id="dont-cloak-btn" style="padding:10px 20px;">Continue</button>
-          </div>
-        `;
-        document.body.appendChild(popup);
-
-        document.getElementById('cloak-btn').onclick = () => {
-          const win = window.open('about:blank', '_blank');
-          win.document.write('<iframe src="' + window.location.href + '" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>');
-          localStorage.setItem('cloakDone', 'true');
-          window.close();
-        };
-
-        document.getElementById('dont-cloak-btn').onclick = () => {
-          localStorage.setItem('cloakDone', 'true');
-          document.body.removeChild(popup);
-        };
-      }
-    }
-
-    showCloakPrompt();
-
-    // Load games from JSON file in repo root
     async function loadGames() {
       try {
-        const res = await fetch('./games-list.json'); // root path
-        const gameFolders = await res.json();
+        // Fetch JSON from root
+        const res = await fetch('./games-list.json');
+        const games = await res.json();
 
-        gameFolders.forEach(game => {
-          // Ensure valid thumbnail URL
-          const thumb = game.thumb && game.thumb.length > 0 ? game.thumb : 'default-thumbnail.png';
-
+        games.forEach(game => {
+          const thumb = game.thumb || 'default-thumbnail.png'; // fallback
           const div = document.createElement('div');
           div.className = 'game-card';
           div.dataset.name = game.folder.toLowerCase();
@@ -124,36 +61,23 @@
           gamesContainer.appendChild(div);
         });
       } catch (err) {
-        console.error("Error loading games-list.json:", err);
+        console.error("Failed to load games-list.json:", err);
       }
     }
 
     loadGames();
 
-    // Search function
     function filterGames() {
       const input = document.getElementById('search').value.toLowerCase();
-      const cards = document.querySelectorAll('.game-card');
-      cards.forEach(card => {
+      document.querySelectorAll('.game-card').forEach(card => {
         card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
       });
     }
 
-    // Close game
     function closeGame() {
       gameFrame.src = '';
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
-
-    // Volume control for iframe games
-    volumeSlider.addEventListener('input', () => {
-      const vol = volumeSlider.value / 100;
-      try {
-        gameFrame.contentWindow.postMessage({type: 'setVolume', value: vol}, '*');
-      } catch(e) {
-        console.log("Volume control may not work due to cross-origin restrictions");
-      }
-    });
   </script>
 </body>
 </html>
