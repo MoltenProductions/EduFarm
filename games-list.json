@@ -20,6 +20,10 @@
     "thumb": "games/2048-multitask/splash.png"
   },
   {
+    "folder": "5 Nights At Epstiens",
+    "thumb": ""
+  },
+  {
     "folder": "9007199254740992",
     "thumb": "games/9007199254740992/logo-4.png"
   },
@@ -220,8 +224,8 @@
     "thumb": "games/btts/icon-114.png"
   },
   {
-    "folder": "buckshot-roulette-web-main",
-    "thumb": "games/buckshot-roulette-web-main/shotgun.png"
+    "folder": "BuckShot Roulette",
+    "thumb": "games/BuckShot Roulette/shotgun.png"
   },
   {
     "folder": "burger-and-frights",
