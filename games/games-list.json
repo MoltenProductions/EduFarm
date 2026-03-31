@@ -206,5 +206,37 @@
   {
     "folder": "breakingthebank",
     "thumb": "games/breakingthebank/breakingthebank.png"
+  },
+  {
+    "folder": "btd4",
+    "thumb": "games/btd4/"
+  },
+  {
+    "folder": "btd5",
+    "thumb": "games/btd5/BT5_Deluxe_logo.png"
+  },
+  {
+    "folder": "btts",
+    "thumb": "games/btts/icon-114.png"
+  },
+  {
+    "folder": "burger-and-frights",
+    "thumb": "games/burger-and-frights/icon.png"
+  },
+  {
+    "folder": "bus and subway",
+    "thumb": "games/bus and subway/fg.png"
+  },
+  {
+    "folder": "cannon-basketball-4",
+    "thumb": "games/cannon-basketball-4/"
+  },
+  {
+    "folder": "canyondefense",
+    "thumb": "games/canyondefense/canyondefense.png"
+  },
+  {
+    "folder": "cars-simulator",
+    "thumb": "games/cars-simulator/splash.png"
   }
 ]
