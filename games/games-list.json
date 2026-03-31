@@ -486,5 +486,37 @@
   {
     "folder": "exo",
     "thumb": "games/exo/"
+  },
+  {
+    "folder": "factoryballs",
+    "thumb": "games/factoryballs/"
+  },
+  {
+    "folder": "fairsquares",
+    "thumb": "games/fairsquares/index.apple-touch-icon.png"
+  },
+  {
+    "folder": "fake-virus",
+    "thumb": "games/fake-virus/background.jpg"
+  },
+  {
+    "folder": "fancypantsadventures",
+    "thumb": "games/fancypantsadventures/fancypantsadventure.png"
+  },
+  {
+    "folder": "fantasy-dash",
+    "thumb": "games/fantasy-dash/"
+  },
+  {
+    "folder": "fireboywatergirlforesttemple",
+    "thumb": "games/fireboywatergirlforesttemple/icon-60x60.png"
+  },
+  {
+    "folder": "flappy plane",
+    "thumb": "games/flappy plane/"
+  },
+  {
+    "folder": "flappy-2048",
+    "thumb": "games/flappy-2048/"
   }
 ]
