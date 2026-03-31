@@ -454,5 +454,37 @@
   {
     "folder": "edgenotfound",
     "thumb": "games/edgenotfound/edge.png"
+  },
+  {
+    "folder": "eel-slap",
+    "thumb": "games/eel-slap/eel-slap.png"
+  },
+  {
+    "folder": "eggycar",
+    "thumb": "games/eggycar/eggy-car.png"
+  },
+  {
+    "folder": "elasticman",
+    "thumb": "games/elasticman/elasticman.jpg"
+  },
+  {
+    "folder": "endlesswar3",
+    "thumb": "games/endlesswar3/endlesswar3.png"
+  },
+  {
+    "folder": "escapingtheprison",
+    "thumb": "games/escapingtheprison/escapingtheprison.jpg"
+  },
+  {
+    "folder": "evil-glitch",
+    "thumb": "games/evil-glitch/evil.png"
+  },
+  {
+    "folder": "evolution",
+    "thumb": "games/evolution/banner.png"
+  },
+  {
+    "folder": "exo",
+    "thumb": "games/exo/"
   }
 ]
