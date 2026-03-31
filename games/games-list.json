@@ -562,5 +562,61 @@
   {
     "folder": "fsucraft",
     "thumb": "games/fsucraft/"
+  },
+  {
+    "folder": "fuclient",
+    "thumb": "games/fuclient/"
+  },
+  {
+    "folder": "gachalife",
+    "thumb": "games/gachalife/splash.png"
+  },
+  {
+    "folder": "game-inside",
+    "thumb": "games/game-inside/"
+  },
+  {
+    "folder": "gdtd",
+    "thumb": "games/gdtd/"
+  },
+  {
+    "folder": "gearsofbabies",
+    "thumb": "games/gearsofbabies/"
+  },
+  {
+    "folder": "generic-fishing-game",
+    "thumb": "games/generic-fishing-game/banner.png"
+  },
+  {
+    "folder": "geochallenge",
+    "thumb": "games/geochallenge/"
+  },
+  {
+    "folder": "geodash",
+    "thumb": "games/geodash/geoscratchicon.png"
+  },
+  {
+    "folder": "geodashlite",
+    "thumb": "games/geodashlite/geodashlite.png"
+  },
+  {
+    "folder": "geogeo",
+    "thumb": "games/geogeo/"
+  },
+  {
+    "folder": "geojump",
+    "thumb": "games/geojump/loading3860.png"
+  },
+  {
+    "folder": "geoneondash",
+    "thumb": "games/geoneondash/icon-256.png"
+  },
+  {
+    "folder": "geops1",
+    "thumb": "games/geops1/"
+  },
+  {
+    "folder": "georash",
+    "thumb": "games/georash/"
   }
 ]
