@@ -150,5 +150,29 @@
   {
     "folder": "battleforgondor",
     "thumb": "games/battleforgondor/battleforgondor.JPG"
+  },
+  {
+    "folder": "bigredbutton",
+    "thumb": "games/bigredbutton/bigredbutton.png"
+  },
+  {
+    "folder": "bitlife",
+    "thumb": "games/bitlife/logo.png"
+  },
+  {
+    "folder": "blacholesquare",
+    "thumb": "games/blacholesquare/icon.png"
+  },
+  {
+    "folder": "blackknight",
+    "thumb": "games/blackknight/blackknight.png"
+  },
+  {
+    "folder": "blockpost",
+    "thumb": "games/blockpost/thumb.png"
+  },
+  {
+    "folder": "bloonstd",
+    "thumb": "games/bloonstd/bloonstd.jpg"
   }
 ]
