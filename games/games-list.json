@@ -174,5 +174,37 @@
   {
     "folder": "bloonstd",
     "thumb": "games/bloonstd/bloonstd.jpg"
+  },
+  {
+    "folder": "bloonstd2",
+    "thumb": "games/bloonstd2/bloonstd2.png"
+  },
+  {
+    "folder": "bloxors",
+    "thumb": "games/bloxors/block.png"
+  },
+  {
+    "folder": "bntts",
+    "thumb": "games/bntts/"
+  },
+  {
+    "folder": "bobtherobber2",
+    "thumb": "games/bobtherobber2/"
+  },
+  {
+    "folder": "bonkio",
+    "thumb": "games/bonkio/image.png"
+  },
+  {
+    "folder": "boxhead2play",
+    "thumb": "games/boxhead2play/boxhead2play.jpg"
+  },
+  {
+    "folder": "boxing-random",
+    "thumb": "games/boxing-random/512x340.jpg"
+  },
+  {
+    "folder": "breakingthebank",
+    "thumb": "games/breakingthebank/breakingthebank.png"
   }
 ]
