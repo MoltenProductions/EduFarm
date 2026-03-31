@@ -73,11 +73,11 @@
   },
   {
     "folder": "angelunder",
-    "thumb": "games/angelunder/"
+    "thumb": ""
   },
   {
     "folder": "angry-sharks",
-    "thumb": "games/angry-sharks/"
+    "thumb": ""
   },
   {
     "folder": "aquapark-slides",
@@ -97,7 +97,7 @@
   },
   {
     "folder": "backrooms",
-    "thumb": "games/backrooms/"
+    "thumb": ""
   },
   {
     "folder": "backrooms-2d",
@@ -105,7 +105,7 @@
   },
   {
     "folder": "backrooms2d",
-    "thumb": "games/backrooms2d/"
+    "thumb": ""
   },
   {
     "folder": "bacon-may-die",
@@ -129,7 +129,7 @@
   },
   {
     "folder": "balldodge",
-    "thumb": "games/balldodge/"
+    "thumb": ""
   },
   {
     "folder": "ballistic-chickens",
@@ -137,11 +137,11 @@
   },
   {
     "folder": "basket-random",
-    "thumb": "games/basket-random/"
+    "thumb": ""
   },
   {
     "folder": "basketball-stars",
-    "thumb": "games/basketball-stars/"
+    "thumb": ""
   },
   {
     "folder": "basketbros-io",
@@ -185,11 +185,11 @@
   },
   {
     "folder": "bntts",
-    "thumb": "games/bntts/"
+    "thumb": ""
   },
   {
     "folder": "bobtherobber2",
-    "thumb": "games/bobtherobber2/"
+    "thumb": ""
   },
   {
     "folder": "bonkio",
@@ -209,7 +209,7 @@
   },
   {
     "folder": "btd4",
-    "thumb": "games/btd4/"
+    "thumb": ""
   },
   {
     "folder": "btd5",
@@ -218,6 +218,10 @@
   {
     "folder": "btts",
     "thumb": "games/btts/icon-114.png"
+  },
+  {
+    "folder": "buckshot-roulette-web-main",
+    "thumb": "games/buckshot-roulette-web-main/shotgun.png"
   },
   {
     "folder": "burger-and-frights",
@@ -229,7 +233,7 @@
   },
   {
     "folder": "cannon-basketball-4",
-    "thumb": "games/cannon-basketball-4/"
+    "thumb": ""
   },
   {
     "folder": "canyondefense",
@@ -241,7 +245,7 @@
   },
   {
     "folder": "cell-machine",
-    "thumb": "games/cell-machine/"
+    "thumb": ""
   },
   {
     "folder": "champion-island",
@@ -257,23 +261,23 @@
   },
   {
     "folder": "chess",
-    "thumb": "games/chess/"
+    "thumb": ""
   },
   {
     "folder": "chill-radio",
-    "thumb": "games/chill-radio/"
+    "thumb": ""
   },
   {
     "folder": "chrome-dino",
-    "thumb": "games/chrome-dino/"
+    "thumb": ""
   },
   {
     "folder": "circlo",
-    "thumb": "games/circlo/"
+    "thumb": ""
   },
   {
     "folder": "classicube",
-    "thumb": "games/classicube/"
+    "thumb": ""
   },
   {
     "folder": "cluster-rush",
@@ -281,7 +285,7 @@
   },
   {
     "folder": "CMM Client",
-    "thumb": "games/CMM Client/"
+    "thumb": ""
   },
   {
     "folder": "cnpingpong",
@@ -301,7 +305,7 @@
   },
   {
     "folder": "craftmine",
-    "thumb": "games/craftmine/"
+    "thumb": ""
   },
   {
     "folder": "creativekillchamber",
@@ -313,7 +317,7 @@
   },
   {
     "folder": "csgo-clicker",
-    "thumb": "games/csgo-clicker/"
+    "thumb": ""
   },
   {
     "folder": "ctr",
@@ -321,7 +325,7 @@
   },
   {
     "folder": "ctr-holiday",
-    "thumb": "games/ctr-holiday/"
+    "thumb": ""
   },
   {
     "folder": "ctr-tr",
@@ -329,7 +333,7 @@
   },
   {
     "folder": "cubefield",
-    "thumb": "games/cubefield/"
+    "thumb": ""
   },
   {
     "folder": "cupcake2048",
@@ -345,7 +349,7 @@
   },
   {
     "folder": "death-run-3d",
-    "thumb": "games/death-run-3d/"
+    "thumb": ""
   },
   {
     "folder": "deepest-sword",
@@ -361,7 +365,7 @@
   },
   {
     "folder": "dodge",
-    "thumb": "games/dodge/"
+    "thumb": ""
   },
   {
     "folder": "doge2048",
@@ -369,7 +373,7 @@
   },
   {
     "folder": "DogeMiner",
-    "thumb": "games/DogeMiner/"
+    "thumb": ""
   },
   {
     "folder": "Dogeminer2",
@@ -381,7 +385,7 @@
   },
   {
     "folder": "doom",
-    "thumb": "games/doom/"
+    "thumb": ""
   },
   {
     "folder": "DOOMORI",
@@ -397,11 +401,11 @@
   },
   {
     "folder": "draw-the-hill",
-    "thumb": "games/draw-the-hill/"
+    "thumb": ""
   },
   {
     "folder": "drift-boss",
-    "thumb": "games/drift-boss/"
+    "thumb": ""
   },
   {
     "folder": "drift-hunters",
@@ -437,11 +441,11 @@
   },
   {
     "folder": "eaglerfaithful",
-    "thumb": "games/eaglerfaithful/"
+    "thumb": ""
   },
   {
     "folder": "eaglerjp",
-    "thumb": "games/eaglerjp/"
+    "thumb": ""
   },
   {
     "folder": "earntodie",
@@ -485,11 +489,11 @@
   },
   {
     "folder": "exo",
-    "thumb": "games/exo/"
+    "thumb": ""
   },
   {
     "folder": "factoryballs",
-    "thumb": "games/factoryballs/"
+    "thumb": ""
   },
   {
     "folder": "fairsquares",
@@ -505,7 +509,7 @@
   },
   {
     "folder": "fantasy-dash",
-    "thumb": "games/fantasy-dash/"
+    "thumb": ""
   },
   {
     "folder": "fireboywatergirlforesttemple",
@@ -513,15 +517,15 @@
   },
   {
     "folder": "flappy plane",
-    "thumb": "games/flappy plane/"
+    "thumb": ""
   },
   {
     "folder": "flappy-2048",
-    "thumb": "games/flappy-2048/"
+    "thumb": ""
   },
   {
     "folder": "flappy-bird",
-    "thumb": "games/flappy-bird/"
+    "thumb": ""
   },
   {
     "folder": "flappybird",
@@ -561,11 +565,11 @@
   },
   {
     "folder": "fsucraft",
-    "thumb": "games/fsucraft/"
+    "thumb": ""
   },
   {
     "folder": "fuclient",
-    "thumb": "games/fuclient/"
+    "thumb": ""
   },
   {
     "folder": "gachalife",
@@ -573,15 +577,15 @@
   },
   {
     "folder": "game-inside",
-    "thumb": "games/game-inside/"
+    "thumb": ""
   },
   {
     "folder": "gdtd",
-    "thumb": "games/gdtd/"
+    "thumb": ""
   },
   {
     "folder": "gearsofbabies",
-    "thumb": "games/gearsofbabies/"
+    "thumb": ""
   },
   {
     "folder": "generic-fishing-game",
@@ -589,7 +593,7 @@
   },
   {
     "folder": "geochallenge",
-    "thumb": "games/geochallenge/"
+    "thumb": ""
   },
   {
     "folder": "geodash",
@@ -601,7 +605,7 @@
   },
   {
     "folder": "geogeo",
-    "thumb": "games/geogeo/"
+    "thumb": ""
   },
   {
     "folder": "geojump",
@@ -613,27 +617,27 @@
   },
   {
     "folder": "geops1",
-    "thumb": "games/geops1/"
+    "thumb": ""
   },
   {
     "folder": "georash",
-    "thumb": "games/georash/"
+    "thumb": ""
   },
   {
     "folder": "georgeandtheprinter",
-    "thumb": "games/georgeandtheprinter/"
+    "thumb": ""
   },
   {
     "folder": "geotrash",
-    "thumb": "games/geotrash/"
+    "thumb": ""
   },
   {
     "folder": "getaway-shootout",
-    "thumb": "games/getaway-shootout/"
+    "thumb": ""
   },
   {
     "folder": "gimme-the-airpod",
-    "thumb": "games/gimme-the-airpod/"
+    "thumb": ""
   },
   {
     "folder": "glass-city",
@@ -641,7 +645,7 @@
   },
   {
     "folder": "gmonster",
-    "thumb": "games/gmonster/"
+    "thumb": ""
   },
   {
     "folder": "go-ball",
@@ -653,7 +657,7 @@
   },
   {
     "folder": "goodnight-meowmie",
-    "thumb": "games/goodnight-meowmie/"
+    "thumb": ""
   },
   {
     "folder": "google-feud",
@@ -661,7 +665,7 @@
   },
   {
     "folder": "google-snake",
-    "thumb": "games/google-snake/"
+    "thumb": ""
   },
   {
     "folder": "gravity-soccer",
@@ -673,7 +677,7 @@
   },
   {
     "folder": "grindcraft",
-    "thumb": "games/grindcraft/"
+    "thumb": ""
   },
   {
     "folder": "hackertype",
