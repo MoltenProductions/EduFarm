@@ -18,17 +18,17 @@
 
   <!-- Main Games Content -->
   <main class="games-page">
-    <!-- Search Bar -->
     <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
-
-    <!-- Game Tiles -->
     <div id="game-list"></div>
 
     <!-- Game Play Area -->
     <div id="game-play-wrapper">
-      <!-- Left & Right Ad Panels -->
-      <div class="ad-panel" id="ad-left">Ad Panel</div>
-      
+      <!-- Left Ad Panel -->
+      <div class="ad-panel" id="ad-left">
+        <div class="ad-box">Left Panel</div>
+      </div>
+
+      <!-- Game Container -->
       <div id="game-container">
         <iframe id="game-frame" src=""></iframe>
         <div id="game-controls">
@@ -36,8 +36,11 @@
           <label>Volume: <input type="range" id="volume" min="0" max="100" value="100"></label>
         </div>
       </div>
-      
-      <div class="ad-panel" id="ad-right">Ad Panel</div>
+
+      <!-- Right Ad Panel -->
+      <div class="ad-panel" id="ad-right">
+        <div class="ad-box">Right Panel</div>
+      </div>
     </div>
   </main>
 
@@ -49,6 +52,7 @@
   <script>
     const gamesContainer = document.getElementById('game-list');
     const gameFrame = document.getElementById('game-frame');
+    const volumeSlider = document.getElementById('volume');
 
     // List of game folders
     const gameFolders = [
@@ -85,12 +89,15 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Volume control (works if game uses iframe audio)
-    const volumeSlider = document.getElementById('volume');
+    // Volume control for iframe games (requires same-origin or postMessage support)
     volumeSlider.addEventListener('input', () => {
-      const iframe = document.getElementById('game-frame');
-      // This requires the game to support postMessage volume control
-      iframe.contentWindow.postMessage({type: 'setVolume', value: volumeSlider.value}, '*');
+      const vol = volumeSlider.value / 100;
+      // Attempt to post a message to iframe for volume
+      try {
+        gameFrame.contentWindow.postMessage({type: 'setVolume', value: vol}, '*');
+      } catch(e) {
+        console.log("Volume control may not work due to cross-origin restrictions");
+      }
     });
   </script>
 </body>
