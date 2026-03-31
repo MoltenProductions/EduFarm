@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moltens Lab - Games</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Simple style for error messages */
+    .game-error { color: red; font-size: 0.9em; margin-top: 5px; }
+  </style>
 </head>
 <body>
   <header>
@@ -43,25 +47,49 @@
 
     async function loadGames() {
       try {
-        // Fetch JSON from root
         const res = await fetch('./games-list.json');
         const games = await res.json();
 
         games.forEach(game => {
-          const thumb = game.thumb || 'default-thumbnail.png'; // fallback
+          // Replace spaces with hyphens for URL paths
+          const folderSafe = game.folder.replace(/ /g, '-');
+
+          const thumb = game.thumb || 'default-thumbnail.png';
           const div = document.createElement('div');
           div.className = 'game-card';
-          div.dataset.name = game.folder.toLowerCase();
+          div.dataset.name = folderSafe.toLowerCase();
           div.style.backgroundImage = `url('${thumb}')`;
           div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
+
+          // Click event
           div.addEventListener('click', () => {
-            gameFrame.src = `games/${game.folder}/index.html`;
-            window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
+            const gameURL = `games/${folderSafe}/index.html`;
+            fetch(gameURL, { method: 'HEAD' })
+              .then(res => {
+                if(res.ok) {
+                  gameFrame.src = gameURL;
+                  window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
+                } else {
+                  alert(`Game not found: ${folderSafe}`);
+                }
+              }).catch(() => alert(`Game not found: ${folderSafe}`));
           });
+
+          // Check thumbnail exists
+          fetch(thumb, { method: 'HEAD' })
+            .catch(() => {
+              const errMsg = document.createElement('div');
+              errMsg.className = 'game-error';
+              errMsg.innerText = "Thumbnail missing!";
+              div.appendChild(errMsg);
+            });
+
           gamesContainer.appendChild(div);
         });
+
       } catch (err) {
         console.error("Failed to load games-list.json:", err);
+        gamesContainer.innerHTML = "<p class='game-error'>Failed to load games list.</p>";
       }
     }
 
