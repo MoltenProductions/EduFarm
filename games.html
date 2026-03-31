@@ -102,14 +102,16 @@
 
     showCloakPrompt();
 
-    // Load games from JSON file
+    // Load games from JSON file in repo root
     async function loadGames() {
       try {
-        const res = await fetch('games-list.json');
+        const res = await fetch('./games-list.json'); // root path
         const gameFolders = await res.json();
 
         gameFolders.forEach(game => {
+          // Ensure valid thumbnail URL
           const thumb = game.thumb && game.thumb.length > 0 ? game.thumb : 'default-thumbnail.png';
+
           const div = document.createElement('div');
           div.className = 'game-card';
           div.dataset.name = game.folder.toLowerCase();
@@ -122,7 +124,7 @@
           gamesContainer.appendChild(div);
         });
       } catch (err) {
-        console.error("Error loading games-list.json", err);
+        console.error("Error loading games-list.json:", err);
       }
     }
 
@@ -143,7 +145,7 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Volume control for iframe games (requires same-origin or postMessage support)
+    // Volume control for iframe games
     volumeSlider.addEventListener('input', () => {
       const vol = volumeSlider.value / 100;
       try {
