@@ -28,7 +28,35 @@
     "thumb": "games/99balls/99-balls-evo.jpg"
   },
   {
+    "folder": "a-dance-of-fire-and-ice",
+    "thumb": "games/a-dance-of-fire-and-ice/splash.png"
+  },
+  {
     "folder": "achievementunlocked",
     "thumb": "games/achievementunlocked/achievementunlocked.png"
+  },
+  {
+    "folder": "adarkroom",
+    "thumb": "games/adarkroom/splash.png"
+  },
+  {
+    "folder": "adrenalinechallenge",
+    "thumb": "games/adrenalinechallenge/adrenalinechallenge.jpg"
+  },
+  {
+    "folder": "adventure-drivers",
+    "thumb": "games/adventure-drivers/favicon.png"
+  },
+  {
+    "folder": "ages-of-conflict",
+    "thumb": "games/ages-of-conflict/splash.jpg"
+  },
+  {
+    "folder": "alienhominid",
+    "thumb": "games/alienhominid/alienhominid.jpg"
+  },
+  {
+    "folder": "align-4",
+    "thumb": "games/align-4/board.png"
   }
 ]
