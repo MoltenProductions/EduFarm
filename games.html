@@ -15,7 +15,7 @@
     <h2>Welcome to Moltens Lab</h2>
 
     <p>
-      Welcome to Moltens Lab. If you are using a public computer you may
+      Welcome to Moltens Lab. If you are using a school or public computer you may
       want to cloak the tab. Cloaking opens the site inside an about:blank tab
       so the URL appears blank. If you don't need this you can continue normally.
     </p>
@@ -98,7 +98,21 @@ const gamesContainer = document.getElementById("game-list");
 const gameFrame = document.getElementById("game-frame");
 const volumeSlider = document.getElementById("volume");
 
-/* GAME LIST */
+/* =========================
+CHECK IF USER ALREADY CLOAKED
+========================= */
+
+window.addEventListener("load", () => {
+
+if(localStorage.getItem("cloakUsed") === "true"){
+document.getElementById("cloak-popup").style.display = "none";
+}
+
+});
+
+/* =========================
+GAME LIST
+========================= */
 
 const gameFolders = [
 
@@ -109,7 +123,9 @@ const gameFolders = [
 
 ];
 
-/* CREATE GAME CARDS */
+/* =========================
+CREATE GAME CARDS
+========================= */
 
 gameFolders.forEach(game=>{
 
@@ -138,7 +154,9 @@ gamesContainer.appendChild(div);
 
 });
 
-/* SEARCH */
+/* =========================
+SEARCH
+========================= */
 
 function filterGames(){
 
@@ -156,7 +174,9 @@ card.style.display=card.dataset.name.includes(input)
 
 }
 
-/* CLOSE GAME */
+/* =========================
+CLOSE GAME
+========================= */
 
 function closeGame(){
 
@@ -169,7 +189,9 @@ behavior:"smooth"
 
 }
 
-/* VOLUME CONTROL */
+/* =========================
+VOLUME CONTROL
+========================= */
 
 volumeSlider.addEventListener("input",()=>{
 
@@ -190,9 +212,14 @@ console.log("Volume may not work for this game");
 
 });
 
-/* CLOAK FUNCTION */
+/* =========================
+CLOAK FUNCTION
+========================= */
 
 function openBlank(){
+
+// remember user cloaked
+localStorage.setItem("cloakUsed","true");
 
 var win=window.open("about:blank","_blank");
 
@@ -202,7 +229,9 @@ win.document.write(
 
 }
 
-/* CLOSE POPUP */
+/* =========================
+CLOSE POPUP
+========================= */
 
 function closePopup(){
 
