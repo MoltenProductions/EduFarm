@@ -13,6 +13,7 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="games.html">Games</a>
+      <a href="sites.html" target="_blank">Sites</a>
     </nav>
   </header>
 
@@ -47,56 +48,44 @@
   <!-- Footer -->
   <footer>
     <p>© 2026 Moltens Lab | Made By: Mason A</p>
+    <p><a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join our Discord</a></p>
   </footer>
 
-  <!-- Welcome Cloak Popup -->
-  <div id="cloak-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;text-align:center;padding:20px;">
-    <h2>Welcome to Moltens Lab!</h2>
-    <p style="margin:20px 0;line-height:1.5;font-size:1.1rem;">
-      Welcome to Moltens Lab. If you are using a public computer you may
-      want to cloak the tab. Cloaking opens the site inside an about:blank tab
-      so the URL appears blank. If you don't need this you can continue normally.
-    </p>
-    <div>
-      <button onclick="cloakPage()" style="padding:10px 20px;margin-right:10px;background:#ff4500;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">Cloak</button>
-      <button onclick="closePopup()" style="padding:10px 20px;background:#555;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">Don't Cloak</button>
-    </div>
-  </div>
-
   <script>
+    // -------------------
+    // Cloak Popup Logic
+    // -------------------
+    const cloakShown = sessionStorage.getItem('cloakShown');
+    if (!cloakShown) {
+      const cloak = confirm(
+        "Welcome to Moltens Lab.\n\n" +
+        "If you are using a public computer you may want to cloak the tab.\n" +
+        "Cloaking opens the site inside an about:blank tab so the URL appears blank.\n" +
+        "If you don't need this you can continue normally."
+      );
+      if (cloak) {
+        // Open a new about:blank tab with the current page inside an iframe
+        const win = window.open('about:blank', '_blank');
+        win.document.write('<iframe src="' + window.location.href + '" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>');
+        // Close current tab
+        window.close();
+      }
+      sessionStorage.setItem('cloakShown', true);
+    }
+
+    // -------------------
+    // Game Setup
+    // -------------------
     const gamesContainer = document.getElementById('game-list');
     const gameFrame = document.getElementById('game-frame');
     const volumeSlider = document.getElementById('volume');
-    const cloakPopup = document.getElementById('cloak-popup');
 
-    // Show popup every time unless user clicked Cloak in this session
-    if (!sessionStorage.getItem('cloaked')) {
-      cloakPopup.style.display = 'flex';
-    }
-
-    function cloakPage() {
-      // mark as cloaked for THIS session only
-      sessionStorage.setItem('cloaked', 'true');
-      // Open new about:blank tab
-      const win = window.open('about:blank', '_blank');
-      win.document.write(`
-        <iframe src="${window.location.href}" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
-      `);
-      win.document.title = "Moltens Lab";
-      // Close current tab
-      window.close();
-    }
-
-    function closePopup() {
-      cloakPopup.style.display = 'none';
-    }
-
-    // List of game folders
     const gameFolders = [
       {folder: '10-minutes-till-dawn', thumb: 'games/10-minutes-till-dawn/thumbnail.jpg'},
       {folder: '100ng', thumb: 'games/100ng/100ng.jpg'},
       {folder: '1v1lol', thumb: 'games/1v1lol/logo.png'},
       {folder: '99balls', thumb: 'games/99balls/99-balls-evo.jpg'},
+      // Add more games here
     ];
 
     // Generate game cards
@@ -128,7 +117,7 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Volume control for iframe games
+    // Volume control (requires same-origin or postMessage support)
     volumeSlider.addEventListener('input', () => {
       const vol = volumeSlider.value / 100;
       try {
