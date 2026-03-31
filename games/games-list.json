@@ -358,5 +358,49 @@
   {
     "folder": "doctor-acorn2",
     "thumb": "games/doctor-acorn2/icon-256.png"
+  },
+  {
+    "folder": "dodge",
+    "thumb": "games/dodge/"
+  },
+  {
+    "folder": "doge2048",
+    "thumb": "games/doge2048/favicon.png"
+  },
+  {
+    "folder": "DogeMiner",
+    "thumb": "games/DogeMiner/"
+  },
+  {
+    "folder": "Dogeminer2",
+    "thumb": "games/Dogeminer2/dogesans-numbers_0.png"
+  },
+  {
+    "folder": "doodle-jump",
+    "thumb": "games/doodle-jump/doodle.png"
+  },
+  {
+    "folder": "doom",
+    "thumb": "games/doom/"
+  },
+  {
+    "folder": "DOOMORI",
+    "thumb": "games/DOOMORI/splash.png"
+  },
+  {
+    "folder": "doublewires",
+    "thumb": "games/doublewires/doublewires.png"
+  },
+  {
+    "folder": "dragon-vs-bricks",
+    "thumb": "games/dragon-vs-bricks/icon.jpg"
+  },
+  {
+    "folder": "draw-the-hill",
+    "thumb": "games/draw-the-hill/"
+  },
+  {
+    "folder": "drift-boss",
+    "thumb": "games/drift-boss/"
   }
 ]
