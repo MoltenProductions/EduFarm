@@ -658,5 +658,25 @@
   {
     "folder": "google-feud",
     "thumb": "games/google-feud/splash.png"
+  },
+  {
+    "folder": "google-snake",
+    "thumb": "games/google-snake/"
+  },
+  {
+    "folder": "gravity-soccer",
+    "thumb": "games/gravity-soccer/icon-256.png"
+  },
+  {
+    "folder": "greybox",
+    "thumb": "games/greybox/ico.png"
+  },
+  {
+    "folder": "grindcraft",
+    "thumb": "games/grindcraft/"
+  },
+  {
+    "folder": "hackertype",
+    "thumb": "games/hackertype/logo192.png"
   }
 ]
