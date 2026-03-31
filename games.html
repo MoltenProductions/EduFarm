@@ -1,245 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moltens Lab - Games</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moltens Lab - Games</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <!-- Header -->
+  <header>
+    <h1>Moltens Lab</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+    </nav>
+  </header>
 
-<!-- Cloak Popup -->
-<div id="cloak-popup">
-  <div class="cloak-box">
-    <h2>Welcome to Moltens Lab</h2>
+  <!-- Main Games Content -->
+  <main class="games-page">
+    <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
+    <div id="game-list"></div>
 
-    <p>
-      Welcome to Moltens Lab. If you are using a school or public computer you may
-      want to cloak the tab. Cloaking opens the site inside an about:blank tab
-      so the URL appears blank. If you don't need this you can continue normally.
-    </p>
+    <!-- Game Play Area -->
+    <div id="game-play-wrapper">
+      <!-- Left Ad Panel -->
+      <div class="ad-panel" id="ad-left">
+        <div class="ad-box">Left Panel</div>
+      </div>
 
-    <div class="cloak-buttons">
-      <button onclick="openBlank()">Cloak</button>
-      <button onclick="closePopup()">Don't Cloak</button>
+      <!-- Game Container -->
+      <div id="game-container">
+        <iframe id="game-frame" src=""></iframe>
+        <div id="game-controls">
+          <button id="close-game" onclick="closeGame()">Close Game</button>
+          <label>Volume: <input type="range" id="volume" min="0" max="100" value="100"></label>
+        </div>
+      </div>
+
+      <!-- Right Ad Panel -->
+      <div class="ad-panel" id="ad-right">
+        <div class="ad-box">Right Panel</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Moltens Lab | Made By: Mason A</p>
+  </footer>
+
+  <!-- Welcome Cloak Popup -->
+  <div id="cloak-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;display:none;">
+    <h2>Welcome to Moltens Lab!</h2>
+    <p id="cloak-message">Enter a message here...</p>
+    <input type="text" id="cloak-input" placeholder="Type your message here" style="padding:10px;width:300px;margin:10px 0;font-size:1rem;">
+    <div>
+      <button onclick="cloakPage()" style="padding:10px 20px;margin-right:10px;background:#ff4500;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">Cloak</button>
+      <button onclick="closePopup()" style="padding:10px 20px;background:#555;color:white;border:none;border-radius:5px;cursor:pointer;font-weight:bold;">Don't Cloak</button>
     </div>
   </div>
-</div>
 
-<!-- Header -->
-<header>
-<h1>Moltens Lab</h1>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="games.html">Games</a>
-</nav>
-
-</header>
-
-<!-- Main Games Content -->
-<main class="games-page">
-
-<input
-type="text"
-id="search"
-placeholder="Search games..."
-oninput="filterGames()"
-/>
-
-<div id="game-list"></div>
-
-<!-- Game Play Area -->
-<div id="game-play-wrapper">
-
-<!-- Left Ad Panel -->
-<div class="ad-panel" id="ad-left">
-<div class="ad-box">Left Panel</div>
-</div>
-
-<!-- Game Container -->
-<div id="game-container">
-
-<iframe id="game-frame" src=""></iframe>
-
-<div id="game-controls">
-
-<button id="close-game" onclick="closeGame()">
-Close Game
-</button>
-
-<label>
-Volume
-<input type="range" id="volume" min="0" max="100" value="100">
-</label>
-
-</div>
-
-</div>
-
-<!-- Right Ad Panel -->
-<div class="ad-panel" id="ad-right">
-<div class="ad-box">Right Panel</div>
-</div>
-
-</div>
-
-</main>
-
-<!-- Footer -->
-<footer>
-<p>© 2026 Moltens Lab | Made By: Mason A</p>
-</footer>
-
-<script>
-
-const gamesContainer = document.getElementById("game-list");
-const gameFrame = document.getElementById("game-frame");
-const volumeSlider = document.getElementById("volume");
-
-/* =========================
-CHECK IF USER ALREADY CLOAKED
-========================= */
-
-window.addEventListener("load", () => {
-
-if(localStorage.getItem("cloakUsed") === "true"){
-document.getElementById("cloak-popup").style.display = "none";
-}
-
-});
-
-/* =========================
-GAME LIST
-========================= */
-
-const gameFolders = [
-
-{folder:"10-minutes-till-dawn",thumb:"games/10-minutes-till-dawn/thumbnail.jpg"},
-{folder:"100ng",thumb:"games/100ng/100ng.jpg"},
-{folder:"1v1lol",thumb:"games/1v1lol/logo.png"},
-{folder:"99balls",thumb:"games/99balls/99-balls-evo.jpg"}
-
-];
-
-/* =========================
-CREATE GAME CARDS
-========================= */
-
-gameFolders.forEach(game=>{
-
-const div=document.createElement("div");
-
-div.className="game-card";
-
-div.dataset.name=game.folder.toLowerCase();
-
-div.style.backgroundImage=`url('${game.thumb}')`;
-
-div.innerHTML=`<h3>${game.folder.replace(/-/g," ")}</h3>`;
-
-div.addEventListener("click",()=>{
-
-gameFrame.src=`games/${game.folder}/index.html`;
-
-window.scrollTo({
-top:gameFrame.offsetTop-20,
-behavior:"smooth"
-});
-
-});
-
-gamesContainer.appendChild(div);
-
-});
-
-/* =========================
-SEARCH
-========================= */
-
-function filterGames(){
-
-const input=document.getElementById("search").value.toLowerCase();
-
-const cards=document.querySelectorAll(".game-card");
-
-cards.forEach(card=>{
-
-card.style.display=card.dataset.name.includes(input)
-? "flex"
-: "none";
-
-});
-
-}
-
-/* =========================
-CLOSE GAME
-========================= */
-
-function closeGame(){
-
-gameFrame.src="";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-/* =========================
-VOLUME CONTROL
-========================= */
-
-volumeSlider.addEventListener("input",()=>{
-
-const vol=volumeSlider.value/100;
-
-try{
-
-gameFrame.contentWindow.postMessage(
-{type:"setVolume",value:vol},
-"*"
-);
-
-}catch(e){
-
-console.log("Volume may not work for this game");
-
-}
-
-});
-
-/* =========================
-CLOAK FUNCTION
-========================= */
-
-function openBlank(){
-
-// remember user cloaked
-localStorage.setItem("cloakUsed","true");
-
-var win=window.open("about:blank","_blank");
-
-win.document.write(
-'<iframe src="'+window.location.href+'" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>'
-);
-
-}
-
-/* =========================
-CLOSE POPUP
-========================= */
-
-function closePopup(){
-
-document.getElementById("cloak-popup").style.display="none";
-
-}
-
-</script>
-
+  <script>
+    const gamesContainer = document.getElementById('game-list');
+    const gameFrame = document.getElementById('game-frame');
+    const volumeSlider = document.getElementById('volume');
+    const cloakPopup = document.getElementById('cloak-popup');
+    const cloakInput = document.getElementById('cloak-input');
+
+    // Show popup only if not cloaked before
+    if (!localStorage.getItem('cloaked')) {
+      cloakPopup.style.display = 'flex';
+    }
+
+    function cloakPage() {
+      localStorage.setItem('cloaked', 'true'); // mark as cloaked
+      const userMsg = cloakInput.value || "Welcome to Moltens Lab!"; 
+      // open new about:blank tab
+      const win = window.open('about:blank', '_blank');
+      win.document.write(`
+        <iframe src="${window.location.href}" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
+      `);
+      win.document.title = "Moltens Lab";
+      // Close current tab
+      window.close();
+    }
+
+    function closePopup() {
+      cloakPopup.style.display = 'none';
+    }
+
+    // List of game folders
+    const gameFolders = [
+      {folder: '10-minutes-till-dawn', thumb: 'games/10-minutes-till-dawn/thumbnail.jpg'},
+      {folder: '100ng', thumb: 'games/100ng/100ng.jpg'},
+      {folder: '1v1lol', thumb: 'games/1v1lol/logo.png'},
+      {folder: '99balls', thumb: 'games/99balls/99-balls-evo.jpg'},
+    ];
+
+    // Generate game cards
+    gameFolders.forEach(game => {
+      const div = document.createElement('div');
+      div.className = 'game-card';
+      div.dataset.name = game.folder.toLowerCase();
+      div.style.backgroundImage = `url('${game.thumb}')`;
+      div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
+      div.addEventListener('click', () => {
+        gameFrame.src = `games/${game.folder}/index.html`;
+        window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
+      });
+      gamesContainer.appendChild(div);
+    });
+
+    // Search function
+    function filterGames() {
+      const input = document.getElementById('search').value.toLowerCase();
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
+      });
+    }
+
+    // Close game
+    function closeGame() {
+      gameFrame.src = '';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Volume control for iframe games (requires same-origin or postMessage support)
+    volumeSlider.addEventListener('input', () => {
+      const vol = volumeSlider.value / 100;
+      try {
+        gameFrame.contentWindow.postMessage({type: 'setVolume', value: vol}, '*');
+      } catch(e) {
+        console.log("Volume control may not work due to cross-origin restrictions");
+      }
+    });
+  </script>
 </body>
 </html>
