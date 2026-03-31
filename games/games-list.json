@@ -278,5 +278,41 @@
   {
     "folder": "cluster-rush",
     "thumb": "games/cluster-rush/icon.jpg"
+  },
+  {
+    "folder": "CMM Client",
+    "thumb": "games/CMM Client/"
+  },
+  {
+    "folder": "cnpingpong",
+    "thumb": "games/cnpingpong/tabletennisultimate.png"
+  },
+  {
+    "folder": "connect3",
+    "thumb": "games/connect3/connect3.png"
+  },
+  {
+    "folder": "cookie-clicker",
+    "thumb": "games/cookie-clicker/logo.png"
+  },
+  {
+    "folder": "core-ball",
+    "thumb": "games/core-ball/pr_source.png"
+  },
+  {
+    "folder": "craftmine",
+    "thumb": "games/craftmine/"
+  },
+  {
+    "folder": "creativekillchamber",
+    "thumb": "games/creativekillchamber/creativekillchamber.jpg"
+  },
+  {
+    "folder": "crossyroad",
+    "thumb": "games/crossyroad/crossyroad.png"
+  },
+  {
+    "folder": "csgo-clicker",
+    "thumb": "games/csgo-clicker/"
   }
 ]
