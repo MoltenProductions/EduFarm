@@ -18,16 +18,26 @@
 
   <!-- Main Games Content -->
   <main class="games-page">
-    <!-- Centered Search Bar -->
+    <!-- Search Bar -->
     <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
 
     <!-- Game Tiles -->
     <div id="game-list"></div>
 
-    <!-- Game Container with Close Button -->
-    <div id="game-container">
-      <button id="close-game" onclick="closeGame()">Close Game</button>
-      <iframe id="game-frame" src=""></iframe>
+    <!-- Game Play Area -->
+    <div id="game-play-wrapper">
+      <!-- Left & Right Ad Panels -->
+      <div class="ad-panel" id="ad-left">Ad Panel</div>
+      
+      <div id="game-container">
+        <iframe id="game-frame" src=""></iframe>
+        <div id="game-controls">
+          <button id="close-game" onclick="closeGame()">Close Game</button>
+          <label>Volume: <input type="range" id="volume" min="0" max="100" value="100"></label>
+        </div>
+      </div>
+      
+      <div class="ad-panel" id="ad-right">Ad Panel</div>
     </div>
   </main>
 
@@ -40,12 +50,10 @@
     const gamesContainer = document.getElementById('game-list');
     const gameFrame = document.getElementById('game-frame');
 
-    // List of game folders (each folder should have an index.html and thumbnail image)
+    // List of game folders
     const gameFolders = [
       {folder: '10-minutes-till-dawn', thumb: 'games/10-minutes-till-dawn/thumbnail.jpg'},
       {folder: '100ng', thumb: 'games/100ng/100ng.jpg'}
-      // Add more games here in the same format:
-      // {folder: 'MyGame', thumb: 'games/MyGame/thumbnail.jpg'}
     ];
 
     // Generate game cards
@@ -56,7 +64,6 @@
       div.style.backgroundImage = `url('${game.thumb}')`;
       div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
       div.addEventListener('click', () => {
-        // Open game in iframe on same page
         gameFrame.src = `games/${game.folder}/index.html`;
         window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
       });
@@ -72,11 +79,19 @@
       });
     }
 
-    // Close game function
+    // Close game
     function closeGame() {
       gameFrame.src = '';
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
+
+    // Volume control (works if game uses iframe audio)
+    const volumeSlider = document.getElementById('volume');
+    volumeSlider.addEventListener('input', () => {
+      const iframe = document.getElementById('game-frame');
+      // This requires the game to support postMessage volume control
+      iframe.contentWindow.postMessage({type: 'setVolume', value: volumeSlider.value}, '*');
+    });
   </script>
 </body>
 </html>
