@@ -50,7 +50,7 @@
   </footer>
 
   <!-- Welcome Cloak Popup -->
-  <div id="cloak-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;display:none;text-align:center;padding:20px;">
+  <div id="cloak-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1000;text-align:center;padding:20px;">
     <h2>Welcome to Moltens Lab!</h2>
     <p style="margin:20px 0;line-height:1.5;font-size:1.1rem;">
       Welcome to Moltens Lab. If you are using a public computer you may
@@ -69,13 +69,14 @@
     const volumeSlider = document.getElementById('volume');
     const cloakPopup = document.getElementById('cloak-popup');
 
-    // Show popup on every visit unless the user clicked Cloak previously
-    if (!localStorage.getItem('cloaked')) {
+    // Show popup every time unless user clicked Cloak in this session
+    if (!sessionStorage.getItem('cloaked')) {
       cloakPopup.style.display = 'flex';
     }
 
     function cloakPage() {
-      localStorage.setItem('cloaked', 'true'); // mark as cloaked
+      // mark as cloaked for THIS session only
+      sessionStorage.setItem('cloaked', 'true');
       // Open new about:blank tab
       const win = window.open('about:blank', '_blank');
       win.document.write(`
@@ -127,7 +128,7 @@
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Volume control for iframe games (requires same-origin or postMessage support)
+    // Volume control for iframe games
     volumeSlider.addEventListener('input', () => {
       const vol = volumeSlider.value / 100;
       try {
