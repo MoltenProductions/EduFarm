@@ -618,5 +618,45 @@
   {
     "folder": "georash",
     "thumb": "games/georash/"
+  },
+  {
+    "folder": "georgeandtheprinter",
+    "thumb": "games/georgeandtheprinter/"
+  },
+  {
+    "folder": "geotrash",
+    "thumb": "games/geotrash/"
+  },
+  {
+    "folder": "getaway-shootout",
+    "thumb": "games/getaway-shootout/"
+  },
+  {
+    "folder": "gimme-the-airpod",
+    "thumb": "games/gimme-the-airpod/"
+  },
+  {
+    "folder": "glass-city",
+    "thumb": "games/glass-city/banner.png"
+  },
+  {
+    "folder": "gmonster",
+    "thumb": "games/gmonster/"
+  },
+  {
+    "folder": "go-ball",
+    "thumb": "games/go-ball/game.jpg"
+  },
+  {
+    "folder": "goodnight",
+    "thumb": "games/goodnight/goodnight.jpg"
+  },
+  {
+    "folder": "goodnight-meowmie",
+    "thumb": "games/goodnight-meowmie/"
+  },
+  {
+    "folder": "google-feud",
+    "thumb": "games/google-feud/splash.png"
   }
 ]
