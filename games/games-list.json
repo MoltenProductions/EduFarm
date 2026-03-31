@@ -402,5 +402,57 @@
   {
     "folder": "drift-boss",
     "thumb": "games/drift-boss/"
+  },
+  {
+    "folder": "drift-hunters",
+    "thumb": "games/drift-hunters/drift-hunters.png"
+  },
+  {
+    "folder": "drive-mad",
+    "thumb": "games/drive-mad/logo.jpg"
+  },
+  {
+    "folder": "ducklife1",
+    "thumb": "games/ducklife1/ducklife.png"
+  },
+  {
+    "folder": "ducklife2",
+    "thumb": "games/ducklife2/ducklife2.png"
+  },
+  {
+    "folder": "ducklife3",
+    "thumb": "games/ducklife3/duck.png"
+  },
+  {
+    "folder": "ducklife4",
+    "thumb": "games/ducklife4/splash.jpg"
+  },
+  {
+    "folder": "duke-nukem-2",
+    "thumb": "games/duke-nukem-2/splash.jpg"
+  },
+  {
+    "folder": "dumbwaystodie",
+    "thumb": "games/dumbwaystodie/image.png"
+  },
+  {
+    "folder": "eaglerfaithful",
+    "thumb": "games/eaglerfaithful/"
+  },
+  {
+    "folder": "eaglerjp",
+    "thumb": "games/eaglerjp/"
+  },
+  {
+    "folder": "earntodie",
+    "thumb": "games/earntodie/loading.png"
+  },
+  {
+    "folder": "edge-surf",
+    "thumb": "games/edge-surf/splash.png"
+  },
+  {
+    "folder": "edgenotfound",
+    "thumb": "games/edgenotfound/edge.png"
   }
 ]
