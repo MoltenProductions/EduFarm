@@ -69,14 +69,14 @@
     const volumeSlider = document.getElementById('volume');
     const cloakPopup = document.getElementById('cloak-popup');
 
-    // Show popup only if not cloaked before
+    // Show popup on every visit unless the user clicked Cloak previously
     if (!localStorage.getItem('cloaked')) {
       cloakPopup.style.display = 'flex';
     }
 
     function cloakPage() {
       localStorage.setItem('cloaked', 'true'); // mark as cloaked
-      // open new about:blank tab
+      // Open new about:blank tab
       const win = window.open('about:blank', '_blank');
       win.document.write(`
         <iframe src="${window.location.href}" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
