@@ -95,27 +95,24 @@ header nav a:hover {
 }
 
 /* ===========================
-   Games Page
+   Games Page Specific
 =========================== */
+
 main.games-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+    padding: 20px;
 }
 
-/* Center the search bar */
 #search {
     padding: 15px;
     width: 400px;
     font-size: 1.2rem;
     border-radius: 10px;
     border: none;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #game-list {
@@ -127,7 +124,6 @@ main.games-page {
     max-width: 1300px;
 }
 
-/* Game tiles with background images */
 .game-card {
     border-radius: 15px;
     width: 300px;
@@ -149,16 +145,16 @@ main.games-page {
 .game-card::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4); /* dark overlay for readability */
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.4);
 }
 
 .game-card h3 {
-    position: relative; /* to be above overlay */
-    z-index: 1;
+    position: relative;
+    z-index:1;
     margin-bottom: 10px;
 }
 
@@ -167,13 +163,68 @@ main.games-page {
     filter: brightness(1.1);
 }
 
-/* iframe for selected game */
-iframe#game-frame {
+/* Game play wrapper with side panels */
+#game-play-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
     margin-top: 30px;
-    width: 90%;
-    height: 650px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.ad-panel {
+    width: 150px;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#ad-left { }
+#ad-right { }
+
+#game-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-frame {
+    width: 100%;
+    height: 700px;
     border: none;
     border-radius: 10px;
+    background-color: #000;
+}
+
+#game-controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#close-game {
+    padding: 10px 20px;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#close-game:hover {
+    background-color: #ff652f;
+}
+
+#volume {
+    cursor: pointer;
 }
 
 /* ===========================
