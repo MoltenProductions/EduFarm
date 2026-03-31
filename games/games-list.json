@@ -518,5 +518,49 @@
   {
     "folder": "flappy-2048",
     "thumb": "games/flappy-2048/"
+  },
+  {
+    "folder": "flappy-bird",
+    "thumb": "games/flappy-bird/"
+  },
+  {
+    "folder": "flappybird",
+    "thumb": "games/flappybird/logo.png"
+  },
+  {
+    "folder": "flashtetris",
+    "thumb": "games/flashtetris/flashtetris.png"
+  },
+  {
+    "folder": "fleeingthecomplex",
+    "thumb": "games/fleeingthecomplex/a.png"
+  },
+  {
+    "folder": "flippy-fish",
+    "thumb": "games/flippy-fish/2022_10_28_0jt_Kleki.png"
+  },
+  {
+    "folder": "fnaw",
+    "thumb": "games/fnaw/char_charles.jpg"
+  },
+  {
+    "folder": "fridaynightfunkin",
+    "thumb": "games/fridaynightfunkin/favicon.png"
+  },
+  {
+    "folder": "froggys-battle",
+    "thumb": "games/froggys-battle/banner.jpg"
+  },
+  {
+    "folder": "fruitninja",
+    "thumb": "games/fruitninja/FruitNinjaTeaser.jpg"
+  },
+  {
+    "folder": "frying-nemo",
+    "thumb": "games/frying-nemo/icon.png"
+  },
+  {
+    "folder": "fsucraft",
+    "thumb": "games/fsucraft/"
   }
 ]
