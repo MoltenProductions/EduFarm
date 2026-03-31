@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const gamesDir = path.join(__dirname, 'games'); // Path to your /games folder
-const outputFile = path.join(gamesDir, 'games-list.json');
+// Path to your /games folder
+const gamesDir = path.join(__dirname, 'games');
+
+// Output JSON file (in root)
+const outputFile = path.join(__dirname, 'games-list.json');
 
 fs.readdir(gamesDir, { withFileTypes: true }, (err, files) => {
   if (err) {
@@ -14,10 +17,18 @@ fs.readdir(gamesDir, { withFileTypes: true }, (err, files) => {
     .filter(f => f.isDirectory()) // Only folders
     .map(folder => {
       const folderPath = path.join(gamesDir, folder.name);
-      // Look for first thumbnail file: jpg or png
-      const thumbs = fs.readdirSync(folderPath).filter(file => file.match(/\.jpg|\.png/i));
+
+      // Find first thumbnail file: jpg or png
+      const thumbs = fs.readdirSync(folderPath)
+        .filter(file => file.match(/\.(jpg|png)$/i));
+
+      // Prefer files with 'thumbnail' in name
       const thumbFile = thumbs.find(f => f.toLowerCase().includes('thumbnail')) || thumbs[0] || '';
-      return { folder: folder.name, thumb: `games/${folder.name}/${thumbFile}` };
+
+      return {
+        folder: folder.name,
+        thumb: thumbFile ? `games/${folder.name}/${thumbFile}` : ''
+      };
     });
 
   fs.writeFileSync(outputFile, JSON.stringify(gameFolders, null, 2));
