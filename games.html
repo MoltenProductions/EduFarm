@@ -41,71 +41,50 @@
     <p>© 2026 Moltens Lab | Made By: Mason A | <a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join Discord</a></p>
   </footer>
 
-  <script>
-    const gamesContainer = document.getElementById('game-list');
-    const gameFrame = document.getElementById('game-frame');
+ <script>
+const gamesContainer = document.getElementById('game-list');
+const gameFrame = document.getElementById('game-frame');
 
-    async function loadGames() {
-      try {
-        const res = await fetch('./games-list.json');
-        const games = await res.json();
+async function loadGames() {
+  try {
+    const res = await fetch('./games-list.json');
+    const games = await res.json();
 
-        games.forEach(game => {
-          // Replace spaces with hyphens for URL paths
-          const folderSafe = game.folder.replace(/ /g, '-');
+    games.forEach(game => {
+      // Fallback if thumbnail file is missing
+      const thumb = game.thumb || 'default-thumbnail.png';
 
-          const thumb = game.thumb || 'default-thumbnail.png';
-          const div = document.createElement('div');
-          div.className = 'game-card';
-          div.dataset.name = folderSafe.toLowerCase();
-          div.style.backgroundImage = `url('${thumb}')`;
-          div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
+      const div = document.createElement('div');
+      div.className = 'game-card';
+      div.dataset.name = game.folder.toLowerCase();
+      div.style.backgroundImage = `url('${thumb}')`;
+      div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
 
-          // Click event
-          div.addEventListener('click', () => {
-            const gameURL = `games/${folderSafe}/index.html`;
-            fetch(gameURL, { method: 'HEAD' })
-              .then(res => {
-                if(res.ok) {
-                  gameFrame.src = gameURL;
-                  window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
-                } else {
-                  alert(`Game not found: ${folderSafe}`);
-                }
-              }).catch(() => alert(`Game not found: ${folderSafe}`));
-          });
-
-          // Check thumbnail exists
-          fetch(thumb, { method: 'HEAD' })
-            .catch(() => {
-              const errMsg = document.createElement('div');
-              errMsg.className = 'game-error';
-              errMsg.innerText = "Thumbnail missing!";
-              div.appendChild(errMsg);
-            });
-
-          gamesContainer.appendChild(div);
-        });
-
-      } catch (err) {
-        console.error("Failed to load games-list.json:", err);
-        gamesContainer.innerHTML = "<p class='game-error'>Failed to load games list.</p>";
-      }
-    }
-
-    loadGames();
-
-    function filterGames() {
-      const input = document.getElementById('search').value.toLowerCase();
-      document.querySelectorAll('.game-card').forEach(card => {
-        card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
+      div.addEventListener('click', () => {
+        gameFrame.src = `games/${game.folder}/index.html`;
+        window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
       });
-    }
 
-    function closeGame() {
-      gameFrame.src = '';
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-  </script>
+      gamesContainer.appendChild(div);
+    });
+  } catch (err) {
+    console.error("Failed to load games-list.json:", err);
+  }
+}
+
+loadGames();
+
+function filterGames() {
+  const input = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
+  });
+}
+
+function closeGame() {
+  gameFrame.src = '';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
 </body>
 </html>
