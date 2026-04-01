@@ -30,6 +30,5 @@
   {
     "folder": "99balls",
     "thumb": "games/99balls/99-balls-evo.jpg"
-  }
-  /* …continue for all other games, replace spaces with hyphens in folder names… */
+  },
 ]
