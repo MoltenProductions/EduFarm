@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 #game-list{
 display:flex;
 flex-wrap:wrap;
@@ -59,13 +60,79 @@ flex-direction:column;
 #game-controls{
 margin-top:5px;
 }
+
+/* cloak popup */
+
+#cloakPrompt{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.cloakBox{
+background:#111;
+color:white;
+padding:30px;
+border-radius:10px;
+text-align:center;
+max-width:400px;
+box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+.cloakButtons{
+margin-top:20px;
+display:flex;
+gap:20px;
+justify-content:center;
+}
+
+.cloakButtons button{
+padding:10px 25px;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+#cloakYes{
+background:#4CAF50;
+color:white;
+}
+
+#cloakNo{
+background:#555;
+color:white;
+}
+
 </style>
 </head>
 
 <body>
 
+<div id="cloakPrompt">
+<div class="cloakBox">
+
+<h2>Privacy Mode</h2>
+<p>Do you want to cloak this tab for privacy?</p>
+
+<div class="cloakButtons">
+<button id="cloakYes">Yes</button>
+<button id="cloakNo">No</button>
+</div>
+
+</div>
+</div>
+
 <header>
 <h1>Moltens Lab</h1>
+
 <nav>
 <a href="index.html">Home</a>
 <a href="games.html">Games</a>
@@ -81,59 +148,63 @@ margin-top:5px;
 
 <div id="game-play-wrapper">
 
-<div class="ad-panel" id="ad-left">
+<div class="ad-panel">
 <div class="ad-box">Left Panel</div>
 </div>
 
 <div id="game-container">
-<iframe id="game-frame" src=""></iframe>
+
+<iframe id="game-frame"></iframe>
 
 <div id="game-controls">
 <button onclick="closeGame()">Close Game</button>
-<label>Volume:
+
+<label>
+Volume:
 <input type="range" id="volume" min="0" max="100" value="100">
 </label>
-</div>
+
 </div>
 
-<div class="ad-panel" id="ad-right">
+</div>
+
+<div class="ad-panel">
 <div class="ad-box">Right Panel</div>
 </div>
 
 </div>
+
 </main>
 
 <footer>
-<p>© 2026 Moltens Lab | Made By: Mason A |
-<a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join Discord</a></p>
+<p>© 2026 Moltens Lab | Made By: Mason A | <a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join Discord</a></p>
 </footer>
 
 <script>
 
-/* TAB PROMPT EVERY SESSION */
+/* cloak popup */
 
-if(!sessionStorage.getItem("tabPromptDone")){
+window.onload=function(){
 
-sessionStorage.setItem("tabPromptDone","true")
+if(!sessionStorage.getItem("cloakPromptShown")){
+document.getElementById("cloakPrompt").style.display="flex"
+}else{
+document.getElementById("cloakPrompt").style.display="none"
+}
 
-const useBlank=confirm("Open Moltens Lab in a blank tab?")
+}
 
-if(useBlank){
+document.getElementById("cloakYes").onclick=function(){
+
+sessionStorage.setItem("cloakPromptShown","true")
 
 const newTab=window.open("about:blank","_blank")
 
 newTab.document.write(`
 <title>Google Docs</title>
 <style>
-html,body{
-margin:0;
-height:100%;
-}
-iframe{
-border:none;
-width:100%;
-height:100%;
-}
+html,body{margin:0;height:100%;}
+iframe{border:none;width:100%;height:100%;}
 </style>
 <iframe src="${location.href}"></iframe>
 `)
@@ -142,11 +213,15 @@ window.location.replace("https://google.com")
 
 }
 
+document.getElementById("cloakNo").onclick=function(){
+
+sessionStorage.setItem("cloakPromptShown","true")
+document.getElementById("cloakPrompt").style.display="none"
+
 }
 
 
-
-/* GAME SYSTEM */
+/* game system */
 
 const gamesContainer=document.getElementById('game-list')
 const gameFrame=document.getElementById('game-frame')
@@ -164,7 +239,7 @@ const games=await res.json()
 
 games.forEach(game=>{
 
-const thumb=game.thumb||'default-thumbnail.png'
+const thumb=game.thumb || 'default-thumbnail.png'
 
 const div=document.createElement('div')
 
@@ -208,7 +283,6 @@ gamesContainer.appendChild(errorDiv)
 }
 
 loadGames()
-
 
 function filterGames(){
 
