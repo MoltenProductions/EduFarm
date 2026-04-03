@@ -1,147 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moltens Lab - Mase A</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Basic game card styles */
-    #game-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 10px;
-    }
-    .game-card {
-      width: 150px;
-      height: 150px;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      color: #fff;
-      font-weight: bold;
-      text-shadow: 0 0 5px black;
-      cursor: pointer;
-      padding: 5px;
-      box-sizing: border-box;
-    }
-    #game-frame {
-      width: 100%;
-      height: 600px;
-      border: none;
-      margin-top: 20px;
-    }
-    #game-play-wrapper {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .ad-panel {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #game-container {
-      flex: 3;
-      display: flex;
-      flex-direction: column;
-    }
-    #game-controls {
-      margin-top: 5px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moltens Lab - Mase A</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+#game-list{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+padding:10px;
+}
+
+.game-card{
+width:150px;
+height:150px;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:#fff;
+font-weight:bold;
+text-shadow:0 0 5px black;
+cursor:pointer;
+padding:5px;
+box-sizing:border-box;
+}
+
+#game-frame{
+width:100%;
+height:600px;
+border:none;
+margin-top:20px;
+}
+
+#game-play-wrapper{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.ad-panel{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+#game-container{
+flex:3;
+display:flex;
+flex-direction:column;
+}
+
+#game-controls{
+margin-top:5px;
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>Moltens Lab</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="games.html">Games</a>
-      <a href="sites.html" target="_blank">Sites</a>
-    </nav>
-  </header>
 
-  <main class="games-page">
-    <input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
-    <div id="game-list"></div>
+<header>
+<h1>Moltens Lab</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="games.html">Games</a>
+<a href="sites.html" target="_blank">Sites</a>
+</nav>
+</header>
 
-    <div id="game-play-wrapper">
-      <div class="ad-panel" id="ad-left"><div class="ad-box">Left Panel</div></div>
-      <div id="game-container">
-        <iframe id="game-frame" src=""></iframe>
-        <div id="game-controls">
-          <button onclick="closeGame()">Close Game</button>
-          <label>Volume: <input type="range" id="volume" min="0" max="100" value="100"></label>
-        </div>
-      </div>
-      <div class="ad-panel" id="ad-right"><div class="ad-box">Right Panel</div></div>
-    </div>
-  </main>
+<main class="games-page">
 
-  <footer>
-    <p>© 2026 Moltens Lab | Made By: Mason A | <a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join Discord</a></p>
-  </footer>
+<input type="text" id="search" placeholder="Search games..." oninput="filterGames()">
 
-  <script>
-    const gamesContainer = document.getElementById('game-list');
-    const gameFrame = document.getElementById('game-frame');
-    const volumeSlider = document.getElementById('volume');
+<div id="game-list"></div>
 
-    // Load games from root JSON
-    async function loadGames() {
-      try {
-        const res = await fetch('games-list.json?v=' + new Date().getTime());
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const games = await res.json();
+<div id="game-play-wrapper">
 
-        games.forEach(game => {
-          const thumb = game.thumb || 'default-thumbnail.png';
-          const div = document.createElement('div');
-          div.className = 'game-card';
-          div.dataset.name = game.folder.toLowerCase();
-          div.style.backgroundImage = `url('${thumb}')`;
-          div.innerHTML = `<h3>${game.folder.replace(/-/g, ' ')}</h3>`;
-          div.addEventListener('click', () => {
-            gameFrame.src = `games/${game.folder}/index.html`;
-            window.scrollTo({top: gameFrame.offsetTop - 20, behavior: 'smooth'});
-          });
-          gamesContainer.appendChild(div);
-        });
-      } catch (err) {
-        console.error("Failed to load games-list.json:", err);
-        const errorDiv = document.createElement('div');
-        errorDiv.textContent = 'Failed to load games. Check JSON file or browser console.';
-        gamesContainer.appendChild(errorDiv);
-      }
-    }
+<div class="ad-panel" id="ad-left">
+<div class="ad-box">Left Panel</div>
+</div>
 
-    loadGames();
+<div id="game-container">
+<iframe id="game-frame" src=""></iframe>
 
-    function filterGames() {
-      const input = document.getElementById('search').value.toLowerCase();
-      document.querySelectorAll('.game-card').forEach(card => {
-        card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
-      });
-    }
+<div id="game-controls">
+<button onclick="closeGame()">Close Game</button>
+<label>Volume:
+<input type="range" id="volume" min="0" max="100" value="100">
+</label>
+</div>
+</div>
 
-    function closeGame() {
-      gameFrame.src = '';
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+<div class="ad-panel" id="ad-right">
+<div class="ad-box">Right Panel</div>
+</div>
 
-    // Volume control (requires same-origin or postMessage support)
-    volumeSlider.addEventListener('input', () => {
-      const vol = volumeSlider.value / 100;
-      try {
-        gameFrame.contentWindow.postMessage({type: 'setVolume', value: vol}, '*');
-      } catch(e) {
-        console.log("Volume control may not work due to cross-origin restrictions");
-      }
-    });
-  </script>
+</div>
+</main>
+
+<footer>
+<p>© 2026 Moltens Lab | Made By: Mason A |
+<a href="https://discord.gg/dVxpKG6xz2" target="_blank">Join Discord</a></p>
+</footer>
+
+<script>
+
+/* TAB PROMPT EVERY SESSION */
+
+if(!sessionStorage.getItem("tabPromptDone")){
+
+sessionStorage.setItem("tabPromptDone","true")
+
+const useBlank=confirm("Open Moltens Lab in a blank tab?")
+
+if(useBlank){
+
+const newTab=window.open("about:blank","_blank")
+
+newTab.document.write(`
+<title>Google Docs</title>
+<style>
+html,body{
+margin:0;
+height:100%;
+}
+iframe{
+border:none;
+width:100%;
+height:100%;
+}
+</style>
+<iframe src="${location.href}"></iframe>
+`)
+
+window.location.replace("https://google.com")
+
+}
+
+}
+
+
+
+/* GAME SYSTEM */
+
+const gamesContainer=document.getElementById('game-list')
+const gameFrame=document.getElementById('game-frame')
+const volumeSlider=document.getElementById('volume')
+
+async function loadGames(){
+
+try{
+
+const res=await fetch('games-list.json?v='+new Date().getTime())
+
+if(!res.ok) throw new Error('HTTP '+res.status)
+
+const games=await res.json()
+
+games.forEach(game=>{
+
+const thumb=game.thumb||'default-thumbnail.png'
+
+const div=document.createElement('div')
+
+div.className='game-card'
+
+div.dataset.name=game.folder.toLowerCase()
+
+div.style.backgroundImage=`url('${thumb}')`
+
+div.innerHTML=`<h3>${game.folder.replace(/-/g,' ')}</h3>`
+
+div.addEventListener('click',()=>{
+
+gameFrame.src=`games/${game.folder}/index.html`
+
+window.scrollTo({
+top:gameFrame.offsetTop-20,
+behavior:'smooth'
+})
+
+})
+
+gamesContainer.appendChild(div)
+
+})
+
+}
+
+catch(err){
+
+console.error("Failed to load games-list.json:",err)
+
+const errorDiv=document.createElement('div')
+errorDiv.style.color="red"
+errorDiv.textContent="Failed to load games list."
+
+gamesContainer.appendChild(errorDiv)
+
+}
+
+}
+
+loadGames()
+
+
+function filterGames(){
+
+const input=document.getElementById('search').value.toLowerCase()
+
+document.querySelectorAll('.game-card').forEach(card=>{
+
+card.style.display=
+card.dataset.name.includes(input) ? 'flex' : 'none'
+
+})
+
+}
+
+function closeGame(){
+
+gameFrame.src=''
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+})
+
+}
+
+volumeSlider.addEventListener('input',()=>{
+
+const vol=volumeSlider.value/100
+
+try{
+
+gameFrame.contentWindow.postMessage(
+{type:'setVolume',value:vol},
+'*'
+)
+
+}catch(e){
+
+console.log("Volume control may not work due to cross-origin restrictions")
+
+}
+
+})
+
+</script>
+
 </body>
 </html>
