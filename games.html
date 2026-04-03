@@ -7,132 +7,113 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-
+/* Game list styling */
 #game-list{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-padding:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  padding:10px;
 }
-
 .game-card{
-width:150px;
-height:150px;
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-color:#fff;
-font-weight:bold;
-text-shadow:0 0 5px black;
-cursor:pointer;
-padding:5px;
-box-sizing:border-box;
+  width:150px;
+  height:150px;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  color:#fff;
+  font-weight:bold;
+  text-shadow:0 0 5px black;
+  cursor:pointer;
+  padding:5px;
+  box-sizing:border-box;
 }
-
 #game-frame{
-width:100%;
-height:600px;
-border:none;
-margin-top:20px;
+  width:100%;
+  height:600px;
+  border:none;
+  margin-top:20px;
 }
-
 #game-play-wrapper{
-display:flex;
-gap:10px;
-margin-top:20px;
+  display:flex;
+  gap:10px;
+  margin-top:20px;
 }
-
 .ad-panel{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-
 #game-container{
-flex:3;
-display:flex;
-flex-direction:column;
+  flex:3;
+  display:flex;
+  flex-direction:column;
 }
-
 #game-controls{
-margin-top:5px;
+  margin-top:5px;
 }
 
 /* POPUP OVERLAY */
-
 #cloakPrompt{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75);
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
 }
-
 .cloakBox{
-background:#111;
-color:white;
-padding:30px;
-border-radius:10px;
-text-align:center;
-width:350px;
-box-shadow:0 0 25px rgba(0,0,0,0.6);
+  background:#111;
+  color:white;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+  width:350px;
+  box-shadow:0 0 25px rgba(0,0,0,0.6);
 }
-
 .cloakButtons{
-margin-top:20px;
-display:flex;
-gap:20px;
-justify-content:center;
+  margin-top:20px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
 }
-
 .cloakButtons button{
-padding:10px 25px;
-border:none;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
+  padding:10px 25px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
 }
-
 #cloakYes{
-background:#4CAF50;
-color:white;
+  background:#4CAF50;
+  color:white;
 }
-
 #cloakNo{
-background:#666;
-color:white;
+  background:#666;
+  color:white;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ON SCREEN POPUP -->
-
+<!-- CLOAK POPUP -->
 <div id="cloakPrompt">
-<div class="cloakBox">
-
-<h2>Privacy Mode</h2>
-
-<p>Do you want to cloak this tab for privacy?</p>
-
-<div class="cloakButtons">
-<button id="cloakYes">Yes</button>
-<button id="cloakNo">No</button>
+  <div class="cloakBox">
+    <h2>Privacy Mode</h2>
+    <p>Do you want to cloak this tab for privacy?</p>
+    <div class="cloakButtons">
+      <button id="cloakYes">Yes</button>
+      <button id="cloakNo">No</button>
+    </div>
+  </div>
 </div>
-
-</div>
-</div>
-
 
 <header>
 <h1>Moltens Lab</h1>
@@ -185,127 +166,90 @@ Volume:
 </footer>
 
 <script>
+const gamesContainer = document.getElementById('game-list');
+const gameFrame = document.getElementById('game-frame');
+const volumeSlider = document.getElementById('volume');
+const cloakPrompt = document.getElementById("cloakPrompt");
 
-/* CLOAK POPUP BUTTONS */
+// --- CLOAK POPUP: Show once per session ---
+if (!sessionStorage.getItem("cloakShown")) {
+  cloakPrompt.style.display = "flex";
 
-document.getElementById("cloakYes").onclick = function(){
+  document.getElementById("cloakYes").onclick = function() {
+    const newTab = window.open("about:blank","_blank");
+    newTab.document.write(`
+      <title>Moltens Lab</title>
+      <style>
+        html,body{margin:0;height:100%;}
+        iframe{border:none;width:100%;height:100%;}
+      </style>
+      <iframe src="${location.href}"></iframe>
+    `);
+    // Close current tab
+    window.close();
+  }
 
-const newTab = window.open("about:blank","_blank")
+  document.getElementById("cloakNo").onclick = function() {
+    cloakPrompt.style.display = "none";
+  }
 
-newTab.document.write(`
-<title>Google Docs</title>
-<style>
-html,body{margin:0;height:100%;}
-iframe{border:none;width:100%;height:100%;}
-</style>
-<iframe src="${location.href}"></iframe>
-`)
-
-window.location.href="https://google.com"
-
+  sessionStorage.setItem("cloakShown","true");
+} else {
+  cloakPrompt.style.display = "none";
 }
 
-document.getElementById("cloakNo").onclick = function(){
+// --- LOAD GAMES ---
+async function loadGames() {
+  try {
+    const res = await fetch('games-list.json?v=' + new Date().getTime());
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const games = await res.json();
 
-document.getElementById("cloakPrompt").style.display="none"
-
+    games.forEach(game => {
+      const thumb = game.thumb || 'default-thumbnail.png';
+      const div = document.createElement('div');
+      div.className = 'game-card';
+      div.dataset.name = game.folder.toLowerCase();
+      div.style.backgroundImage = `url('${thumb}')`;
+      div.innerHTML = `<h3>${game.folder.replace(/-/g,' ')}</h3>`;
+      div.addEventListener('click', () => {
+        gameFrame.src = `games/${game.folder}/index.html`;
+        window.scrollTo({top:gameFrame.offsetTop-20,behavior:'smooth'});
+      });
+      gamesContainer.appendChild(div);
+    });
+  } catch(err) {
+    console.error("Failed to load games-list.json:", err);
+    const errorDiv = document.createElement('div');
+    errorDiv.style.color="red";
+    errorDiv.textContent="Failed to load games list.";
+    gamesContainer.appendChild(errorDiv);
+  }
 }
 
+loadGames();
 
-/* GAME SYSTEM */
-
-const gamesContainer=document.getElementById('game-list')
-const gameFrame=document.getElementById('game-frame')
-const volumeSlider=document.getElementById('volume')
-
-async function loadGames(){
-
-try{
-
-const res=await fetch('games-list.json?v='+new Date().getTime())
-
-if(!res.ok) throw new Error('HTTP '+res.status)
-
-const games=await res.json()
-
-games.forEach(game=>{
-
-const thumb=game.thumb || 'default-thumbnail.png'
-
-const div=document.createElement('div')
-
-div.className='game-card'
-
-div.dataset.name=game.folder.toLowerCase()
-
-div.style.backgroundImage=`url('${thumb}')`
-
-div.innerHTML=`<h3>${game.folder.replace(/-/g,' ')}</h3>`
-
-div.addEventListener('click',()=>{
-
-gameFrame.src=`games/${game.folder}/index.html`
-
-window.scrollTo({
-top:gameFrame.offsetTop-20,
-behavior:'smooth'
-})
-
-})
-
-gamesContainer.appendChild(div)
-
-})
-
+// --- SEARCH FUNCTION ---
+function filterGames() {
+  const input = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.style.display = card.dataset.name.includes(input) ? 'flex' : 'none';
+  });
 }
 
-catch(err){
-
-console.error("Failed to load games-list.json:",err)
-
-const errorDiv=document.createElement('div')
-errorDiv.style.color="red"
-errorDiv.textContent="Failed to load games list."
-
-gamesContainer.appendChild(errorDiv)
-
+// --- CLOSE GAME ---
+function closeGame() {
+  gameFrame.src = '';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-}
-
-loadGames()
-
-
-function filterGames(){
-
-const input=document.getElementById('search').value.toLowerCase()
-
-document.querySelectorAll('.game-card').forEach(card=>{
-
-card.style.display =
-card.dataset.name.includes(input) ? 'flex' : 'none'
-
-})
-
-}
-
-function closeGame(){
-
-gameFrame.src=''
-window.scrollTo({top:0,behavior:'smooth'})
-
-}
-
-volumeSlider.addEventListener('input',()=>{
-
-const vol=volumeSlider.value/100
-
-try{
-gameFrame.contentWindow.postMessage({type:'setVolume',value:vol},'*')
-}catch(e){}
-
-})
-
+// --- VOLUME CONTROL ---
+volumeSlider.addEventListener('input', () => {
+  const vol = volumeSlider.value / 100;
+  try {
+    gameFrame.contentWindow.postMessage({type:'setVolume',value:vol},'*');
+  } catch(e){}
+});
 </script>
 
 </body>
