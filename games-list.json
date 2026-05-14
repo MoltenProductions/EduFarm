@@ -686,5 +686,9 @@
   {
     "folder": "hackertype",
     "thumb": "games/hackertype/logo192.png"
+  },
+  {
+    "folder": "images",
+    "thumb": "games/images/1v1.lol.png"
   }
 ]

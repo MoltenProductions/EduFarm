@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moto X3m Bike Race Game</title>
+  <meta name="description" content="Play Moto X3M Bike Race Game  the ultimate stunt challenge! Flip, speed & crash through insane obstacle courses. No downloads, free to play now! 🏍️💥">
+ <meta name="keywords" content="moto x3m bike race game,moto x3m,moto x3m unblocked,motox3munblocked,moto x3m,moto x3m pool party,moto x3m winter,moto x3m 5 pool party">
+  <meta name="robots" content="index, follow">			
+<meta name="author" content="moto x3m bike race game Team">			
+<meta name="publisher" content="moto x3m bike race game Team">			
+  <style>
+  body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  display: block;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #000;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #000;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.fullscreen-button, .home-button {
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+.fullscreen-button {
+  background: linear-gradient(to right, #ff6b6b, #556270);
+  color: #fff;
+}
+
+.home-button {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: #fff;
+}
+  </style>
+</head>
+
+<body>
+
+  <h1 style="font-weight: bolder; color:black; text-align: center;">Moto x3m bike race game</h1>
+
+  <div class="content">
+    <iframe id="gameFrame" src="https://sciencemathedu.github.io/motox3m3/" onload="focusGame()"></iframe>
+  </div>
+
+  <div style="text-align:center;">
+    <button class="fullscreen-button" onclick="toggleFullScreen()">Fullscreen</button>
+    <button class="home-button" onclick="goToHomePage()">Home</button>
+  </div>
+
+  <div class="container">
+    <h2>Moto X3M Bike Race Game - Ultimate Stunt Challenge!</h2>
+    <p><strong>Moto X3M Bike Race Game</strong> is an adrenaline-packed racing game where players perform insane stunts on challenging tracks. Control your dirt bike, flip through obstacles, and race against the clock to finish each level. With physics-based gameplay, ramps, loops, and deadly traps, it's a test of speed and precision.</p>
+    <h2>How to Play Moto X3M:</h2>
+    <p>Use arrow keys to accelerate, brake, and tilt your bike mid-air. Land smoothly to avoid crashes and complete levels faster for the highest score!</p>
+  </div>
+
+  <script>
+    function toggleFullScreen() {
+      var iframe = document.getElementById('gameFrame');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+      iframe.focus();
+    }
+
+    function focusGame() {
+      var iframe = document.getElementById('gameFrame');
+      iframe.focus();
+    }
+
+    function goToHomePage() {
+      window.location.href = '/';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eggy Car :The Ultimate Eggy Car Racing Adventure</title>
+  <meta name="description" content="Eggy Car is a fun physics game. Drive carefully to protect your egg,collect coins & power ups on bumpy roads. No downloads, play free now!">
+ <meta name="keywords" content="eggy car,eggy car unblocked 76,eggy car game,eggy car unblocked">
+  <meta name="robots" content="index, follow">			
+<meta name="author" content="eggy car Games Team">			
+<meta name="publisher" content="eggy car Games Team">			
+  <style>
+  body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  display: block;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #000;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #000;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.fullscreen-button, .home-button {
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+.fullscreen-button {
+  background: linear-gradient(to right, #ff6b6b, #556270);
+  color: #fff;
+}
+
+.home-button {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: #fff;
+}
+  </style>
+</head>
+
+<body>
+
+  <h1 style="font-weight: bolder; color:black; text-align: center;">Eggy Car</h1>
+
+  <div class="content">
+    <iframe id="gameFrame" src="https://sciencemathedu.github.io/eggycar/" onload="focusGame()"></iframe>
+  </div>
+
+  <div style="text-align:center;">
+    <button class="fullscreen-button" onclick="toggleFullScreen()">Fullscreen</button>
+    <button class="home-button" onclick="goToHomePage()">Home</button>
+  </div>
+
+  <div class="container">
+ <h2>Eggy Car | The Ultimate Egg Racing Adventure</h2>
+    
+    <p>Eggy Car is a thrilling online racing game where players control a cute egg-shaped vehicle through challenging courses. This addictive game combines precision driving with physics-based gameplay for hours of entertainment.</p>
+    
+    <h2>How to Play Eggy Car:</h2>
+    <ol>
+        <li><strong>Start the Game:</strong> Click "Play" to begin your eggy adventure</li>
+        <li><strong>Controls:</strong> Use the arrow keys (↑ for gas, ↓ for brake, ← and → for balance)</li>
+        <li><strong>Balance Your Egg:</strong> Keep your egg car upright while navigating hills</li>
+        <li><strong>Collect Bonuses:</strong> Grab power-ups along the track for extra points</li>
+        <li><strong>Reach the Finish:</strong> Complete each level by crossing the checkered flag</li>
+    </ol>
+    
+    <p>The game features multiple levels with increasing difficulty, colorful graphics, and smooth physics that make every ride unique. Master the art of egg balancing to become the ultimate Eggy Car champion!</p>
+    
+    <h3>Tips for Success:</h3>
+    <ul>
+        <li>Don't accelerate too quickly on steep hills</li>
+        <li>Use gentle taps of the arrow keys for better control</li>
+        <li>Practice makes perfect - each level gets more challenging</li>
+    </ul>
+    
+    <p>For more exciting games like Eggy Car, visit our sister site: <a href="https://soccer-random-game.github.io/" target="_blank">Soccer Random Game</a> featuring fun sports challenges.</p>
+    
+    <p>Eggy Car is perfect for players of all ages looking for casual gaming fun. Try it today and see how far your egg can roll!</p>
+  </div>
+
+  <script>
+    function toggleFullScreen() {
+      var iframe = document.getElementById('gameFrame');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+      iframe.focus();
+    }
+
+    function focusGame() {
+      var iframe = document.getElementById('gameFrame');
+      iframe.focus();
+    }
+
+    function goToHomePage() {
+      window.location.href = '/';
+    }
+  </script>
+</body>
+
+</html>
